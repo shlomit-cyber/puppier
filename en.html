@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workfully — Discover Your Career DNA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#309C8D',
+                        'primary-dark': '#277f73',
+                        secondary: '#C43E66',
+                        accent: '#DB8A16',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .logo-scroll { animation: scroll-logos 30s linear infinite; }
+        @keyframes scroll-logos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+        .faq-answer.open { max-height: 500px; }
+        nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+        .nav-scrolled { background-color: rgba(255,255,255,0.97); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Left side: Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">W</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Workfully</span>
+                </div>
+
+                <!-- Center: Nav tabs (desktop) -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">How It Works</a>
+                    <a href="#features" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Features</a>
+                    <a href="#testimonials" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Testimonials</a>
+                    <a href="#faq" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">FAQ</a>
+                    <a href="companies.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">For Companies</a>
+                </div>
+
+                <!-- Right side: Login + Language -->
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">עב</a>
+                    <span class="text-gray-300">|</span>
+                    <a href="#" class="text-sm font-medium text-white bg-primary hover:bg-primary-dark transition-colors px-4 py-2 rounded-xl">Log In</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#how-it-works" class="block text-sm font-medium text-gray-600 hover:text-primary">How It Works</a>
+                <a href="#features" class="block text-sm font-medium text-gray-600 hover:text-primary">Features</a>
+                <a href="#testimonials" class="block text-sm font-medium text-gray-600 hover:text-primary">Testimonials</a>
+                <a href="#faq" class="block text-sm font-medium text-gray-600 hover:text-primary">FAQ</a>
+                <a href="companies.html" class="block text-sm font-medium text-gray-600 hover:text-primary">For Companies</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-28 pb-20 lg:pt-36 lg:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Text -->
+                <div class="fade-in">
+                    <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-xl text-sm font-medium mb-6">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        Based on a method used with 11,000+ employees and managers
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                        Discover Your <span class="text-primary">Career DNA</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-lg">
+                        A personalized AI-guided process that helps you identify your unique motivations, needs, and strengths — so you can find the right place at work.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
+                            Get Started
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 border-2 border-gray-200 hover:border-primary text-gray-700 hover:text-primary font-medium px-8 py-4 rounded-xl text-lg transition-all">
+                            How It Works
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero SVG Mockup -->
+                <div class="fade-in">
+                    <svg viewBox="0 0 600 440" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full drop-shadow-lg">
+                        <rect x="40" y="20" width="520" height="340" rx="16" fill="#1a1a2e" />
+                        <rect x="52" y="32" width="496" height="308" rx="8" fill="#f8fafc" />
+                        <rect x="52" y="32" width="496" height="40" rx="8" fill="#f1f5f9" />
+                        <circle cx="76" cy="52" r="6" fill="#e2e8f0" />
+                        <circle cx="96" cy="52" r="6" fill="#e2e8f0" />
+                        <circle cx="116" cy="52" r="6" fill="#e2e8f0" />
+                        <rect x="200" y="44" width="200" height="16" rx="8" fill="#e2e8f0" />
+                        <rect x="52" y="72" width="140" height="268" fill="#f8fafc" />
+                        <rect x="52" y="72" width="140" height="268" fill="#309C8D" opacity="0.06" />
+                        <rect x="68" y="88" width="108" height="12" rx="6" fill="#309C8D" opacity="0.3" />
+                        <rect x="68" y="112" width="90" height="10" rx="5" fill="#e2e8f0" />
+                        <rect x="68" y="132" width="100" height="10" rx="5" fill="#e2e8f0" />
+                        <rect x="68" y="152" width="80" height="10" rx="5" fill="#e2e8f0" />
+                        <rect x="68" y="180" width="108" height="12" rx="6" fill="#309C8D" opacity="0.3" />
+                        <rect x="68" y="204" width="95" height="10" rx="5" fill="#e2e8f0" />
+                        <rect x="68" y="224" width="85" height="10" rx="5" fill="#e2e8f0" />
+                        <circle cx="90" cy="290" r="16" fill="#309C8D" opacity="0.15" />
+                        <circle cx="90" cy="285" r="6" fill="#309C8D" opacity="0.4" />
+                        <ellipse cx="90" cy="298" rx="10" ry="6" fill="#309C8D" opacity="0.4" />
+                        <rect x="112" y="282" width="60" height="8" rx="4" fill="#309C8D" opacity="0.25" />
+                        <rect x="112" y="296" width="40" height="6" rx="3" fill="#e2e8f0" />
+                        <rect x="212" y="88" width="160" height="14" rx="7" fill="#1e293b" opacity="0.8" />
+                        <polygon points="350,160 390,190 380,235 320,235 310,190" fill="#309C8D" opacity="0.12" stroke="#309C8D" stroke-width="2" opacity="0.4" />
+                        <polygon points="350,170 380,193 373,225 327,225 320,193" fill="#309C8D" opacity="0.2" />
+                        <circle cx="350" cy="160" r="3" fill="#309C8D" />
+                        <circle cx="390" cy="190" r="3" fill="#309C8D" />
+                        <circle cx="380" cy="235" r="3" fill="#309C8D" />
+                        <circle cx="320" cy="235" r="3" fill="#309C8D" />
+                        <circle cx="310" cy="190" r="3" fill="#309C8D" />
+                        <rect x="336" y="142" width="28" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <rect x="394" y="186" width="36" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <rect x="382" y="240" width="32" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <rect x="284" y="240" width="32" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <rect x="270" y="186" width="36" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <rect x="440" y="88" width="96" height="70" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5" />
+                        <rect x="454" y="100" width="40" height="8" rx="4" fill="#309C8D" opacity="0.3" />
+                        <rect x="454" y="116" width="68" height="20" rx="4" fill="#309C8D" opacity="0.12" />
+                        <text x="462" y="131" font-size="11" fill="#309C8D" font-weight="600">92%</text>
+                        <rect x="454" y="142" width="50" height="6" rx="3" fill="#e2e8f0" />
+                        <rect x="440" y="168" width="96" height="70" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5" />
+                        <rect x="454" y="180" width="40" height="8" rx="4" fill="#C43E66" opacity="0.3" />
+                        <rect x="454" y="196" width="68" height="20" rx="4" fill="#C43E66" opacity="0.12" />
+                        <text x="462" y="211" font-size="11" fill="#C43E66" font-weight="600">87%</text>
+                        <rect x="454" y="222" width="50" height="6" rx="3" fill="#e2e8f0" />
+                        <rect x="212" y="264" width="50" height="56" rx="6" fill="#309C8D" opacity="0.15" />
+                        <rect x="212" y="288" width="50" height="32" rx="6" fill="#309C8D" opacity="0.5" />
+                        <rect x="272" y="264" width="50" height="56" rx="6" fill="#C43E66" opacity="0.15" />
+                        <rect x="272" y="278" width="50" height="42" rx="6" fill="#C43E66" opacity="0.5" />
+                        <rect x="332" y="264" width="50" height="56" rx="6" fill="#DB8A16" opacity="0.15" />
+                        <rect x="332" y="296" width="50" height="24" rx="6" fill="#DB8A16" opacity="0.5" />
+                        <rect x="392" y="264" width="50" height="56" rx="6" fill="#309C8D" opacity="0.15" />
+                        <rect x="392" y="282" width="50" height="38" rx="6" fill="#309C8D" opacity="0.5" />
+                        <rect x="212" y="115" width="110" height="40" rx="10" fill="#309C8D" opacity="0.1" stroke="#309C8D" stroke-width="1" opacity="0.2" />
+                        <circle cx="228" cy="135" r="10" fill="#309C8D" opacity="0.3" />
+                        <text x="228" y="138" font-size="8" fill="white" text-anchor="middle" font-weight="600">D</text>
+                        <rect x="244" y="127" width="64" height="6" rx="3" fill="#309C8D" opacity="0.35" />
+                        <rect x="244" y="138" width="48" height="6" rx="3" fill="#309C8D" opacity="0.2" />
+                        <path d="M20 360 L40 360 Q40 360 40 360 L560 360 Q560 360 560 360 L580 360 L570 380 Q568 384 564 386 L36 386 Q32 384 30 380 Z" fill="#1a1a2e" />
+                        <rect x="240" y="364" width="120" height="4" rx="2" fill="#2a2a3e" />
+                        <ellipse cx="300" cy="400" rx="240" ry="12" fill="#1a1a2e" opacity="0.08" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logos Banner -->
+    <section class="py-12 border-y border-gray-100 bg-gray-50/50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+            <p class="text-center text-sm font-medium text-gray-400">Our method is already used by:</p>
+        </div>
+        <div class="relative overflow-hidden">
+            <div class="flex logo-scroll gap-16 items-center" style="width: max-content;">
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="building-2" class="w-6 h-6"></i> TechCorp</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="briefcase" class="w-6 h-6"></i> InnovateCo</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="landmark" class="w-6 h-6"></i> BankPlus</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="heart-pulse" class="w-6 h-6"></i> HealthTech</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="graduation-cap" class="w-6 h-6"></i> EduLearn</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="rocket" class="w-6 h-6"></i> LaunchPad</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="shield-check" class="w-6 h-6"></i> SecureNet</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="globe" class="w-6 h-6"></i> GlobalHR</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="building-2" class="w-6 h-6"></i> TechCorp</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="briefcase" class="w-6 h-6"></i> InnovateCo</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="landmark" class="w-6 h-6"></i> BankPlus</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="heart-pulse" class="w-6 h-6"></i> HealthTech</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="graduation-cap" class="w-6 h-6"></i> EduLearn</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="rocket" class="w-6 h-6"></i> LaunchPad</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="shield-check" class="w-6 h-6"></i> SecureNet</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="globe" class="w-6 h-6"></i> GlobalHR</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How Does It Work?</h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">Three simple steps from uncertainty to a clear direction</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+                <div class="fade-in">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm h-full">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="message-circle" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div class="text-sm font-semibold text-primary mb-2">Step 1</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Expectation Alignment</h3>
+                        <p class="text-gray-500 leading-relaxed">A brief session or talk that prepares you for the process, explains what to expect, and sets expectations.</p>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm h-full">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="bot" class="w-6 h-6 text-secondary"></i>
+                        </div>
+                        <div class="text-sm font-semibold text-secondary mb-2">Step 2</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Guided Chat with Dana</h3>
+                        <p class="text-gray-500 leading-relaxed">Personal work with Dana, your AI-powered digital guide, who helps you identify your Career DNA — your unique motivations, needs, and strengths.</p>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm h-full">
+                        <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="users" class="w-6 h-6 text-accent"></i>
+                        </div>
+                        <div class="text-sm font-semibold text-accent mb-2">Step 3</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Personal Meeting with a Coach</h3>
+                        <p class="text-gray-500 leading-relaxed">A personal session with a Makdemia coach who connects the insights to your reality, refines your direction, and creates actionable next steps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Banner -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <div class="inline-flex items-center gap-2 mb-4">
+                <i data-lucide="award" class="w-6 h-6 text-primary"></i>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Based on a Method Developed at Makdemia</h3>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">A unique methodology successfully applied with over 11,000 employees, managers, and job seekers — now available to you in a digital, AI-guided version.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What You'll Get</h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">Tools and insights to help you make precise career decisions</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="dna" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Career DNA Analysis</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Deep identification of your unique motivations, needs, and strengths in the world of work.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="compass" class="w-5 h-5 text-secondary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Career Direction Matching</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Matching who you are with the professional environment that brings out your best.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="map" class="w-5 h-5 text-accent"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Personal Career Map</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Concrete next steps based on the insights you discovered during the process.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="bot" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Dana — Your Digital Guide</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">An AI-powered persona that accompanies you throughout the process with deep, personal dialogue.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="target" class="w-5 h-5 text-secondary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Decision Precision</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Turning your desires and abilities into tools for career decisions, from small to significant.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="user-check" class="w-5 h-5 text-accent"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Human Guidance</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">A personal meeting with an experienced coach who connects the digital insights to your reality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What People Say</h2>
+                <p class="text-lg text-gray-500">People who've already discovered their Career DNA</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"The process with Dana was incredible. For the first time, I felt someone truly understood what I need from work. The results helped me make the right decision."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <span class="text-primary font-semibold text-sm">MC</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">Michal Cohen</div>
+                            <div class="text-gray-400 text-sm">Product Manager</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"I didn't think it was possible to be this precise about what I'm looking for. My Career DNA became a tool I use at every career crossroad. Highly recommend."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center">
+                            <span class="text-secondary font-semibold text-sm">YL</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">Yoav Levy</div>
+                            <div class="text-gray-400 text-sm">Software Engineer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"The meeting with the coach after the chat with Dana connected all the dots. I left with a clear action plan and a sense of confidence I didn't know before."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
+                            <span class="text-accent font-semibold text-sm">SB</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">Shira Ben David</div>
+                            <div class="text-gray-400 text-sm">VP of Human Resources</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"After years of feeling I wasn't in the right place, this process helped me understand why. Now I know exactly what to look for and what truly matters to me."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <span class="text-primary font-semibold text-sm">DA</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">Daniel Abraham</div>
+                            <div class="text-gray-400 text-sm">Strategic Consultant</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"Dana asked questions no one had asked me before. It opened a window to things I knew about myself but couldn't articulate. I recommend this to anyone seeking clarity."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center">
+                            <span class="text-secondary font-semibold text-sm">NR</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">Noa Rosenberg</div>
+                            <div class="text-gray-400 text-sm">UX Designer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"I went through the process while happy at my job, and it helped me refine my growth within the organization. You don't need to be in crisis to get value from this."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
+                            <span class="text-accent font-semibold text-sm">AM</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">Amit Mizrahi</div>
+                            <div class="text-gray-400 text-sm">Dev Team Lead</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 lg:py-28">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">How long does the process take?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">The chat with Dana typically takes between one to four hours, depending on the user. Most users enjoy the process and want to fully complete it to refine the results and insights, but it's up to you. The meeting with the coach is about an hour and fifteen minutes.</p>
+                    </div>
+                </div>
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">Can I talk to someone during the chat with Dana if needed?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">Yes, of course. The Workfully.ai team is available to assist you and answer any questions.</p>
+                    </div>
+                </div>
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">What makes Workfully.ai different from other solutions?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">Unlike other digital solutions, Workfully.ai isn't just another questionnaire with generic answers. The process is built on a unique methodology applied face-to-face with over 11,000 employees and managers, enabling deep, personal dialogue to reach the most precise results for you. The process transforms your desires, abilities, and needs into practical tools for career decisions, from small to significant.</p>
+                    </div>
+                </div>
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">Is the process relevant if I'm happy at my current job?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">The process is always relevant. Your unique Career DNA can serve you at crossroads to choose the most precise next step, or in your current role — to refine personal development in your current position and organization, enjoy your work more, and excel at it.</p>
+                    </div>
+                </div>
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">Will my personal information be used?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">Your information is used solely to extract and define your Career DNA and to evaluate your next steps in light of it. We are committed to protecting your privacy.</p>
+                    </div>
+                </div>
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">What do you walk away with at the end?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">At the end of the process, you walk away with your personal Career DNA — unique to you — and concrete suggestions for your path forward based on it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary/5">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Ready to Discover Your Career DNA?</h2>
+            <p class="text-lg text-gray-500 mb-8">Start the process today and find the right place at work.</p>
+            <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
+                Get Started
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-primary rounded-xl flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">W</span>
+                    </div>
+                    <span class="text-lg font-bold text-gray-900">Workfully</span>
+                </div>
+                <div class="flex items-center gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Use</a>
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-colors">Contact Us</a>
+                </div>
+                <p class="text-sm text-gray-400">&copy; 2025 Workfully.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('nav-scrolled', window.scrollY > 20);
+        });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.faq-icon');
+            const isOpen = answer.classList.contains('open');
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+            if (!isOpen) {
+                answer.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>

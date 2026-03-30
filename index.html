@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workfully — גלה את הDNA התעסוקתי שלך</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#309C8D',
+                        'primary-dark': '#277f73',
+                        secondary: '#C43E66',
+                        accent: '#DB8A16',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .logo-scroll { animation: scroll-logos 30s linear infinite; }
+        @keyframes scroll-logos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+        .faq-answer.open { max-height: 500px; }
+        nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+        .nav-scrolled { background-color: rgba(255,255,255,0.97); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Right side: Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">W</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Workfully</span>
+                </div>
+
+                <!-- Center: Nav tabs (desktop) -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">איך זה עובד</a>
+                    <a href="#features" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">מה תקבלו</a>
+                    <a href="#testimonials" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">מה אומרים</a>
+                    <a href="#faq" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">שאלות נפוצות</a>
+                    <a href="companies.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">לחברות</a>
+                </div>
+
+                <!-- Left side: Login + Language -->
+                <div class="flex items-center gap-3">
+                    <a href="en.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">EN</a>
+                    <span class="text-gray-300">|</span>
+                    <a href="#" class="text-sm font-medium text-white bg-primary hover:bg-primary-dark transition-colors px-4 py-2 rounded-xl">להתחברות</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#how-it-works" class="block text-sm font-medium text-gray-600 hover:text-primary">איך זה עובד</a>
+                <a href="#features" class="block text-sm font-medium text-gray-600 hover:text-primary">מה תקבלו</a>
+                <a href="#testimonials" class="block text-sm font-medium text-gray-600 hover:text-primary">מה אומרים</a>
+                <a href="#faq" class="block text-sm font-medium text-gray-600 hover:text-primary">שאלות נפוצות</a>
+                <a href="companies.html" class="block text-sm font-medium text-gray-600 hover:text-primary">לחברות</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-28 pb-20 lg:pt-36 lg:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Text -->
+                <div class="fade-in">
+                    <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-xl text-sm font-medium mb-6">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        מבוסס על שיטה שבוצעה עם 11,000+ עובדים ומנהלים
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                        גלה את ה<span class="text-primary">DNA התעסוקתי</span> שלך
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-lg">
+                        תהליך אישי מונחה AI שעוזר לך לזהות את המוטיבציות, הצרכים והחוזקות הייחודיות שלך — ולהגיע למקום הנכון בעבודה.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
+                            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                            אני רוצה להתחיל
+                        </a>
+                        <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 border-2 border-gray-200 hover:border-primary text-gray-700 hover:text-primary font-medium px-8 py-4 rounded-xl text-lg transition-all">
+                            איך זה עובד?
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero SVG Mockup -->
+                <div class="fade-in lg:order-first">
+                    <svg viewBox="0 0 600 440" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full drop-shadow-lg">
+                        <!-- Laptop body -->
+                        <rect x="40" y="20" width="520" height="340" rx="16" fill="#1a1a2e" />
+                        <!-- Screen -->
+                        <rect x="52" y="32" width="496" height="308" rx="8" fill="#f8fafc" />
+                        <!-- Top bar -->
+                        <rect x="52" y="32" width="496" height="40" rx="8" fill="#f1f5f9" />
+                        <circle cx="76" cy="52" r="6" fill="#e2e8f0" />
+                        <circle cx="96" cy="52" r="6" fill="#e2e8f0" />
+                        <circle cx="116" cy="52" r="6" fill="#e2e8f0" />
+                        <rect x="200" y="44" width="200" height="16" rx="8" fill="#e2e8f0" />
+                        <!-- Sidebar -->
+                        <rect x="52" y="72" width="140" height="268" fill="#f8fafc" />
+                        <rect x="52" y="72" width="140" height="268" fill="#309C8D" opacity="0.06" />
+                        <rect x="68" y="88" width="108" height="12" rx="6" fill="#309C8D" opacity="0.3" />
+                        <rect x="68" y="112" width="90" height="10" rx="5" fill="#e2e8f0" />
+                        <rect x="68" y="132" width="100" height="10" rx="5" fill="#e2e8f0" />
+                        <rect x="68" y="152" width="80" height="10" rx="5" fill="#e2e8f0" />
+                        <rect x="68" y="180" width="108" height="12" rx="6" fill="#309C8D" opacity="0.3" />
+                        <rect x="68" y="204" width="95" height="10" rx="5" fill="#e2e8f0" />
+                        <rect x="68" y="224" width="85" height="10" rx="5" fill="#e2e8f0" />
+                        <!-- Avatar in sidebar -->
+                        <circle cx="90" cy="290" r="16" fill="#309C8D" opacity="0.15" />
+                        <circle cx="90" cy="285" r="6" fill="#309C8D" opacity="0.4" />
+                        <ellipse cx="90" cy="298" rx="10" ry="6" fill="#309C8D" opacity="0.4" />
+                        <rect x="112" y="282" width="60" height="8" rx="4" fill="#309C8D" opacity="0.25" />
+                        <rect x="112" y="296" width="40" height="6" rx="3" fill="#e2e8f0" />
+                        <!-- Main content - DNA Dashboard -->
+                        <!-- Title -->
+                        <rect x="212" y="88" width="160" height="14" rx="7" fill="#1e293b" opacity="0.8" />
+                        <!-- Radar chart -->
+                        <polygon points="350,160 390,190 380,235 320,235 310,190" fill="#309C8D" opacity="0.12" stroke="#309C8D" stroke-width="2" opacity="0.4" />
+                        <polygon points="350,170 380,193 373,225 327,225 320,193" fill="#309C8D" opacity="0.2" />
+                        <circle cx="350" cy="160" r="3" fill="#309C8D" />
+                        <circle cx="390" cy="190" r="3" fill="#309C8D" />
+                        <circle cx="380" cy="235" r="3" fill="#309C8D" />
+                        <circle cx="320" cy="235" r="3" fill="#309C8D" />
+                        <circle cx="310" cy="190" r="3" fill="#309C8D" />
+                        <!-- Radar labels -->
+                        <rect x="336" y="142" width="28" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <rect x="394" y="186" width="36" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <rect x="382" y="240" width="32" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <rect x="284" y="240" width="32" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <rect x="270" y="186" width="36" height="8" rx="4" fill="#64748b" opacity="0.5" />
+                        <!-- Right side cards -->
+                        <rect x="440" y="88" width="96" height="70" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5" />
+                        <rect x="454" y="100" width="40" height="8" rx="4" fill="#309C8D" opacity="0.3" />
+                        <rect x="454" y="116" width="68" height="20" rx="4" fill="#309C8D" opacity="0.12" />
+                        <text x="462" y="131" font-size="11" fill="#309C8D" font-weight="600">92%</text>
+                        <rect x="454" y="142" width="50" height="6" rx="3" fill="#e2e8f0" />
+                        <rect x="440" y="168" width="96" height="70" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5" />
+                        <rect x="454" y="180" width="40" height="8" rx="4" fill="#C43E66" opacity="0.3" />
+                        <rect x="454" y="196" width="68" height="20" rx="4" fill="#C43E66" opacity="0.12" />
+                        <text x="462" y="211" font-size="11" fill="#C43E66" font-weight="600">87%</text>
+                        <rect x="454" y="222" width="50" height="6" rx="3" fill="#e2e8f0" />
+                        <!-- Bottom bar chart -->
+                        <rect x="212" y="264" width="50" height="56" rx="6" fill="#309C8D" opacity="0.15" />
+                        <rect x="212" y="288" width="50" height="32" rx="6" fill="#309C8D" opacity="0.5" />
+                        <rect x="272" y="264" width="50" height="56" rx="6" fill="#C43E66" opacity="0.15" />
+                        <rect x="272" y="278" width="50" height="42" rx="6" fill="#C43E66" opacity="0.5" />
+                        <rect x="332" y="264" width="50" height="56" rx="6" fill="#DB8A16" opacity="0.15" />
+                        <rect x="332" y="296" width="50" height="24" rx="6" fill="#DB8A16" opacity="0.5" />
+                        <rect x="392" y="264" width="50" height="56" rx="6" fill="#309C8D" opacity="0.15" />
+                        <rect x="392" y="282" width="50" height="38" rx="6" fill="#309C8D" opacity="0.5" />
+                        <!-- Chat bubble (Dana) -->
+                        <rect x="212" y="115" width="110" height="40" rx="10" fill="#309C8D" opacity="0.1" stroke="#309C8D" stroke-width="1" opacity="0.2" />
+                        <circle cx="228" cy="135" r="10" fill="#309C8D" opacity="0.3" />
+                        <text x="228" y="138" font-size="8" fill="white" text-anchor="middle" font-weight="600">D</text>
+                        <rect x="244" y="127" width="64" height="6" rx="3" fill="#309C8D" opacity="0.35" />
+                        <rect x="244" y="138" width="48" height="6" rx="3" fill="#309C8D" opacity="0.2" />
+                        <!-- Laptop base -->
+                        <path d="M20 360 L40 360 Q40 360 40 360 L560 360 Q560 360 560 360 L580 360 L570 380 Q568 384 564 386 L36 386 Q32 384 30 380 Z" fill="#1a1a2e" />
+                        <rect x="240" y="364" width="120" height="4" rx="2" fill="#2a2a3e" />
+                        <!-- Shadow -->
+                        <ellipse cx="300" cy="400" rx="240" ry="12" fill="#1a1a2e" opacity="0.08" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logos Banner -->
+    <section class="py-12 border-y border-gray-100 bg-gray-50/50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+            <p class="text-center text-sm font-medium text-gray-400">השיטה שלנו כבר בשימוש ב:</p>
+        </div>
+        <div class="relative overflow-hidden">
+            <div class="flex logo-scroll gap-16 items-center" style="width: max-content;">
+                <!-- Logo set 1 -->
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="building-2" class="w-6 h-6"></i> TechCorp</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="briefcase" class="w-6 h-6"></i> InnovateCo</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="landmark" class="w-6 h-6"></i> BankPlus</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="heart-pulse" class="w-6 h-6"></i> HealthTech</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="graduation-cap" class="w-6 h-6"></i> EduLearn</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="rocket" class="w-6 h-6"></i> LaunchPad</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="shield-check" class="w-6 h-6"></i> SecureNet</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="globe" class="w-6 h-6"></i> GlobalHR</div>
+                <!-- Duplicate for seamless loop -->
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="building-2" class="w-6 h-6"></i> TechCorp</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="briefcase" class="w-6 h-6"></i> InnovateCo</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="landmark" class="w-6 h-6"></i> BankPlus</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="heart-pulse" class="w-6 h-6"></i> HealthTech</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="graduation-cap" class="w-6 h-6"></i> EduLearn</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="rocket" class="w-6 h-6"></i> LaunchPad</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="shield-check" class="w-6 h-6"></i> SecureNet</div>
+                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="globe" class="w-6 h-6"></i> GlobalHR</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">איך התהליך עובד?</h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">שלושה שלבים פשוטים שייקחו אותך מחוסר בהירות לכיוון ברור</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+                <!-- Step 1 -->
+                <div class="fade-in relative">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm h-full">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="message-circle" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div class="text-sm font-semibold text-primary mb-2">שלב 1</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">שיחה לתיאום ציפיות</h3>
+                        <p class="text-gray-500 leading-relaxed">שיחה או הרצאה קצרה שמכינה אותך לתהליך, מסבירה מה צפוי ומתאמת ציפיות.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="fade-in relative">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm h-full">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="bot" class="w-6 h-6 text-secondary"></i>
+                        </div>
+                        <div class="text-sm font-semibold text-secondary mb-2">שלב 2</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">צ'אט מובנה עם דנה</h3>
+                        <p class="text-gray-500 leading-relaxed">עבודה אישית עם דנה, המנחה הדיגיטלית מבוססת AI, שעוזרת לך לזהות את הDNA התעסוקתי שלך — המוטיבציות, הצרכים והחוזקות הייחודיות שלך.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="fade-in relative">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm h-full">
+                        <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="users" class="w-6 h-6 text-accent"></i>
+                        </div>
+                        <div class="text-sm font-semibold text-accent mb-2">שלב 3</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">מפגש אישי עם מנחה</h3>
+                        <p class="text-gray-500 leading-relaxed">שיחה אישית עם מנחת מקדמיה שמחברת את התובנות למציאות שלך, עוזרת לדייק כיוון ומייצרת צעדים קדימה.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Banner -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <div class="inline-flex items-center gap-2 mb-4">
+                <i data-lucide="award" class="w-6 h-6 text-primary"></i>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">מבוסס על שיטה שפותחה במקדמיה</h3>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">שיטה ייחודית שבוצעה בהצלחה עם יותר מ-11,000 עובדים, מנהלים ומחפשי עבודה — עכשיו זמינה לך בגרסה דיגיטלית מונחית AI.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">מה תקבלו מהתהליך</h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">כלים ותובנות שיעזרו לך לקבל החלטות תעסוקתיות מדויקות</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="dna" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">ניתוח DNA תעסוקתי</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">זיהוי מעמיק של המוטיבציות, הצרכים והחוזקות הייחודיות שלך בעולם העבודה.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="compass" class="w-5 h-5 text-secondary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">התאמת כיוון תעסוקתי</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">התאמה בין מי שאתה לבין הסביבה המקצועית שתוציא ממך את המיטב.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="map" class="w-5 h-5 text-accent"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">מפת קריירה אישית</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">צעדים קונקרטיים להמשך הדרך, מבוססים על התובנות שגילית בתהליך.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="bot" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">דנה — המנחה הדיגיטלית</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">פרסונה מבוססת AI שמלווה אותך לאורך כל התהליך בשיח מעמיק ואישי.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="target" class="w-5 h-5 text-secondary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">דיוק בהחלטות</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">הפיכת רצונות ויכולות לכלי עבודה בקבלת החלטות תעסוקתיות, מקטנות ועד גדולות.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="user-check" class="w-5 h-5 text-accent"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">ליווי אנושי</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">מפגש אישי עם מנחה מנוסה שמחברת את התובנות הדיגיטליות למציאות שלך.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">מה אומרים עלינו</h2>
+                <p class="text-lg text-gray-500">אנשים שכבר גילו את הDNA התעסוקתי שלהם</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Testimonial 1 -->
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"התהליך עם דנה היה מדהים. בפעם הראשונה הרגשתי שמישהו באמת מבין מה אני צריכה מהעבודה. התוצרים שקיבלתי עזרו לי לקבל את ההחלטה הנכונה."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <span class="text-primary font-semibold text-sm">מ.כ</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">מיכל כהן</div>
+                            <div class="text-gray-400 text-sm">מנהלת מוצר</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"לא חשבתי שאפשר לדייק ככה את מה שאני מחפש. הDNA התעסוקתי שלי הפך לכלי שאני משתמש בו בכל צומת קריירה. ממליץ בחום."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center">
+                            <span class="text-secondary font-semibold text-sm">י.ל</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">יואב לוי</div>
+                            <div class="text-gray-400 text-sm">מהנדס תוכנה</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"השיחה עם המנחה אחרי הצ'אט עם דנה חיברה לי את כל הנקודות. יצאתי עם תוכנית פעולה ברורה ותחושת ביטחון שלא הכרתי."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
+                            <span class="text-accent font-semibold text-sm">ש.ב</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">שירה בן דוד</div>
+                            <div class="text-gray-400 text-sm">סמנכ"לית משאבי אנוש</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"אחרי שנים של תחושה שאני לא במקום הנכון, התהליך הזה עזר לי להבין למה. עכשיו אני יודע בדיוק מה לחפש ומה חשוב לי באמת."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <span class="text-primary font-semibold text-sm">ד.א</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">דניאל אברהם</div>
+                            <div class="text-gray-400 text-sm">יועץ אסטרטגי</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 5 -->
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"דנה שאלה שאלות שאף אחד לא שאל אותי קודם. זה פתח לי צוהר לדברים שידעתי על עצמי אבל לא ידעתי לנסח. ממליצה לכל מי שמחפש בהירות."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center">
+                            <span class="text-secondary font-semibold text-sm">נ.ר</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">נועה רוזנברג</div>
+                            <div class="text-gray-400 text-sm">מעצבת UX</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 6 -->
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"עשיתי את התהליך בזמן שהייתי מרוצה מהעבודה, וזה עזר לי לדייק את ההתפתחות שלי בתוך הארגון. לא חייבים להיות במשבר כדי להפיק ערך."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
+                            <span class="text-accent font-semibold text-sm">ע.מ</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900 text-sm">עמית מזרחי</div>
+                            <div class="text-gray-400 text-sm">ראש צוות פיתוח</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 lg:py-28">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">שאלות נפוצות</h2>
+            </div>
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">כמה זמן ייקח התהליך?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">הצ'אט עם דנה לוקח לרוב בין שעה לארבע שעות, תלוי משתמש. מרבית המשתמשים נהנים מאוד מהתהליך ורוצים למצות אותו עד תום כדי לדייק את התוצרים ואת התובנות, אבל זה כמובן תלוי בכם. השיחה עם המנחה היא כשעה ורבע.</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">האם יש מישהו שאני יכול לדבר אתו לאורך הצ'אט עם דנה?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">כן, בוודאי. הצוות של Workfully.ai זמין לסייע לכם ולענות על כל שאלה.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">מה מייחד את Workfully.ai מכל שאר הפתרונות בתחום?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">לעומת פתרונות דיגיטליים אחרים, Workfully.ai היא לא עוד שאלון שנותן תשובות גנריות. התהליך בנוי על בסיס שיטה ייחודית שבוצעה פרונטלית עם יותר מ-11,000 עובדים ומנהלים, שמאפשרת שיח מעמיק ופרסונלי כדי להגיע לתוצרים המדויקים ביותר לך. התהליך מאפשר להפוך את הרצונות, היכולות והצרכים שלך לכלי עבודה בקבלת החלטות תעסוקתיות, מקטנות ועד גדולות.</p>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">האם התהליך רלוונטי אם יש לי עבודה ואין לי עניין לעזוב אותה כרגע?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">התהליך תמיד רלוונטי. הDNA התעסוקתי הייחודי שלך יכול לשמש גם בצמתים כדי לבחור את הצעד הבא המדויק ביותר לך, או במקום קיים — כדי לדייק את ההתפתחות האישית בתפקיד הנוכחי ובארגון בו נמצאים, להנות יותר מהעשייה ולהצטיין בה.</p>
+                    </div>
+                </div>
+                <!-- FAQ 5 -->
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">האם ייעשה שימוש במידע האישי שלי מהתהליך?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">המידע שלכם משמש רק כדי לחלץ ולהגדיר את הDNA התעסוקתי שלכם ועל מנת לבחון לאורו את צעדי ההמשך שלכם. אנו מחויבים לשמירה על הפרטיות שלכם.</p>
+                    </div>
+                </div>
+                <!-- FAQ 6 -->
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">עם מה יוצאים בסוף התהליך?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">בסוף התהליך יוצאים עם הDNA התעסוקתי האישי שלך, שייחודי רק לך, ועם הצעות קונקרטיות להמשך הדרך המבוססות עליו.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary/5">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">מוכנים לגלות את הDNA התעסוקתי שלכם?</h2>
+            <p class="text-lg text-gray-500 mb-8">התחילו את התהליך היום ותגיעו למקום הנכון בעבודה.</p>
+            <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                אני רוצה להתחיל
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-primary rounded-xl flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">W</span>
+                    </div>
+                    <span class="text-lg font-bold text-gray-900">Workfully</span>
+                </div>
+                <div class="flex items-center gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-primary transition-colors">תנאי שימוש</a>
+                    <a href="#" class="hover:text-primary transition-colors">מדיניות פרטיות</a>
+                    <a href="#" class="hover:text-primary transition-colors">צרו קשר</a>
+                </div>
+                <p class="text-sm text-gray-400">&copy; 2025 Workfully.ai. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // FAQ toggle
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.faq-icon');
+            const isOpen = answer.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+
+            if (!isOpen) {
+                answer.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>

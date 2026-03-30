@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workfully — לחברות וארגונים</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#309C8D',
+                        'primary-dark': '#277f73',
+                        secondary: '#C43E66',
+                        accent: '#DB8A16',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+        .nav-scrolled { background-color: rgba(255,255,255,0.97); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">W</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Workfully</span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">לדף הבית</a>
+                    <a href="index.html#how-it-works" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">איך זה עובד</a>
+                    <a href="index.html#testimonials" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">מה אומרים</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="en.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">EN</a>
+                    <span class="text-gray-300">|</span>
+                    <a href="#" class="text-sm font-medium text-white bg-primary hover:bg-primary-dark transition-colors px-4 py-2 rounded-xl">להתחברות</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-20 lg:pt-36 lg:pb-28">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <div class="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-1.5 rounded-xl text-sm font-medium mb-6">
+                    <i data-lucide="building-2" class="w-4 h-4"></i>
+                    לחברות וארגונים
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                    עזרו לעובדים שלכם להגיע ל<span class="text-primary">מקום הנכון</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto">
+                    שיטה מוכחת שעוזרת לארגונים לדייק התאמות תפקידים, לשפר שביעות רצון עובדים ולהפחית תחלופה — באמצעות גילוי הDNA התעסוקתי של כל עובד.
+                </p>
+                <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    דברו איתנו
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">למה ארגונים בוחרים ב-Workfully?</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="heart-handshake" class="w-6 h-6 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">שימור עובדים</h3>
+                    <p class="text-gray-500 leading-relaxed">עובדים שמבינים את הDNA התעסוקתי שלהם מרגישים יותר מחוברים לתפקיד ולארגון.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="target" class="w-6 h-6 text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">דיוק התאמות</h3>
+                    <p class="text-gray-500 leading-relaxed">התאמה מדויקת יותר בין עובדים לתפקידים, לצוותים ולסביבות עבודה.</p>
+                </div>
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm">
+                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">פיתוח אישי</h3>
+                    <p class="text-gray-500 leading-relaxed">כלי מעשי לפיתוח קריירה אישית שמעצים את העובדים ומשפר ביצועים.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-3 gap-8 text-center fade-in">
+                <div>
+                    <div class="text-4xl sm:text-5xl font-bold text-primary mb-2">11K+</div>
+                    <p class="text-gray-500">עובדים ומנהלים</p>
+                </div>
+                <div>
+                    <div class="text-4xl sm:text-5xl font-bold text-secondary mb-2">95%</div>
+                    <p class="text-gray-500">שביעות רצון</p>
+                </div>
+                <div>
+                    <div class="text-4xl sm:text-5xl font-bold text-accent mb-2">50+</div>
+                    <p class="text-gray-500">ארגונים</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-primary/5">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">רוצים לשמוע עוד?</h2>
+            <p class="text-lg text-gray-500 mb-8">נשמח לספר על האפשרויות שלנו לארגונים ולהתאים את הפתרון המדויק עבורכם.</p>
+            <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                צרו קשר
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-primary rounded-xl flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">W</span>
+                    </div>
+                    <span class="text-lg font-bold text-gray-900">Workfully</span>
+                </div>
+                <div class="flex items-center gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-primary transition-colors">תנאי שימוש</a>
+                    <a href="#" class="hover:text-primary transition-colors">מדיניות פרטיות</a>
+                    <a href="#" class="hover:text-primary transition-colors">צרו קשר</a>
+                </div>
+                <p class="text-sm text-gray-400">&copy; 2025 Workfully.ai. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('nav-scrolled', window.scrollY > 20);
+        });
+    </script>
+</body>
+</html>
