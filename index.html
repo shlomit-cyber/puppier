@@ -51,14 +51,16 @@
         html { scroll-behavior: smooth; }
         .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .logo-scroll {
-            animation: scroll-logos 40s linear infinite;
-            will-change: transform;
+        .logo-track {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            width: max-content;
+            animation: marquee var(--duration, 40s) linear infinite;
         }
-        .logo-scroll:hover { animation-play-state: running; }
-        @keyframes scroll-logos {
+        @keyframes marquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(calc(-50% - 1.5rem)); }
         }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
         .faq-answer.open { max-height: 500px; }
@@ -226,38 +228,22 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
             <p class="text-center text-lg font-bold text-gray-500">עובדים איתנו</p>
         </div>
-        <div class="relative overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
-            <div class="flex logo-scroll gap-12 items-center" style="width: max-content;">
-                <!-- Logo set 1 -->
-                <img src="logos/logo1.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo2.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo3.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo4.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo5.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo6.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo7.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo8.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo9.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo10.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo11.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo12.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo13.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo14.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <!-- Duplicate for seamless loop -->
-                <img src="logos/logo1.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo2.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo3.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo4.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo5.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo6.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo7.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo8.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo9.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo10.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo11.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo12.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo13.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src="logos/logo14.png" alt="" class="h-12 object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+        <div class="relative overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
+            <div id="logo-track" class="logo-track" style="--duration: 45s;">
+                <img src="logos/logo1.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo2.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo3.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo4.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo5.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo6.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo7.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo8.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo9.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo10.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo11.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo12.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo13.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo14.png" alt="" class="h-12 object-contain opacity-60">
             </div>
         </div>
     </section>
@@ -607,6 +593,16 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
+
+        // Duplicate logo track for seamless infinite scroll
+        const track = document.getElementById('logo-track');
+        if (track) {
+            const items = Array.from(track.children);
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                track.appendChild(clone);
+            });
+        }
 
         // Scroll animations
         const observer = new IntersectionObserver((entries) => {
