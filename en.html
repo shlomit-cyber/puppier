@@ -16,33 +16,18 @@
                         accent: '#DB8A16',
                     },
                     fontFamily: {
-                        sans: ['PauzaBook', 'Inter', 'sans-serif'],
-                        light: ['PauzaLight', 'Inter', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'PauzaBook';
-            src: url('fonts/PauzaBook.woff2') format('woff2'),
-                 url('fonts/PauzaBook.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'PauzaLight';
-            src: url('fonts/PauzaLight.woff2') format('woff2'),
-                 url('fonts/PauzaLight.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        * { font-family: 'PauzaBook', 'Inter', sans-serif; }
-        h1, h2, h3 { letter-spacing: 0.03em; }
+        * { font-family: 'Inter', sans-serif; }
         html { scroll-behavior: smooth; }
         .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
