@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workfully — גלה את הDNA התעסוקתי שלך</title>
+    <title>Workfully - גלה את הDNA התעסוקתי שלך</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,7 +27,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'PauzaBook';
+            src: url('fonts/PauzaBook.woff2') format('woff2'),
+                 url('fonts/PauzaBook.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'PauzaLight';
+            src: url('fonts/PauzaLight.woff2') format('woff2'),
+                 url('fonts/PauzaLight.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
         * { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'PauzaBook', 'Inter', sans-serif; letter-spacing: 0.04em; font-weight: 700; }
         html { scroll-behavior: smooth; }
         .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -101,7 +118,7 @@
                         גלה את ה<span class="text-primary">DNA</span><br><span class="text-primary">התעסוקתי</span> שלך
                     </h1>
                     <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-lg">
-                        תהליך אישי מונחה AI שעוזר לך לזהות את המוטיבציות, הצרכים והחוזקות הייחודיות שלך — ולהגיע למקום הנכון בעבודה.
+                        תהליך אישי מונחה AI שעוזר לך לזהות את המוטיבציות, הצרכים והחוזקות הייחודיות שלך - ולהגיע למקום הנכון בעבודה.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
@@ -253,7 +270,7 @@
                         </div>
                         <div class="text-sm font-semibold text-secondary mb-2">שלב 2</div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">צ'אט מובנה עם דנה</h3>
-                        <p class="text-gray-500 leading-relaxed">עבודה אישית עם דנה, המנחה הדיגיטלית מבוססת AI, שעוזרת לך לזהות את הDNA התעסוקתי שלך — המוטיבציות, הצרכים והחוזקות הייחודיות שלך.</p>
+                        <p class="text-gray-500 leading-relaxed">עבודה אישית עם דנה, המנחה הדיגיטלית מבוססת AI, שעוזרת לך לזהות את הDNA התעסוקתי שלך - המוטיבציות, הצרכים והחוזקות הייחודיות שלך.</p>
                     </div>
                 </div>
                 <!-- Step 3 -->
@@ -278,7 +295,7 @@
                 <i data-lucide="award" class="w-6 h-6 text-primary"></i>
             </div>
             <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">מבוסס על שיטה שפותחה במקדמיה</h3>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">שיטה ייחודית שבוצעה בהצלחה עם יותר מ-11,000 עובדים, מנהלים ומחפשי עבודה — עכשיו זמינה לך בגרסה דיגיטלית מונחית AI.</p>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">שיטה ייחודית שבוצעה בהצלחה עם יותר מ-11,000 עובדים, מנהלים ומחפשי עבודה - עכשיו זמינה לך בגרסה דיגיטלית מונחית AI.</p>
         </div>
     </section>
 
@@ -315,7 +332,7 @@
                     <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
                         <i data-lucide="bot" class="w-5 h-5 text-primary"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">דנה — המנחה הדיגיטלית</h3>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">דנה - המנחה הדיגיטלית</h3>
                     <p class="text-gray-500 text-[15px] leading-relaxed">פרסונה מבוססת AI שמלווה אותך לאורך כל התהליך בשיח מעמיק ואישי.</p>
                 </div>
                 <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
@@ -512,7 +529,7 @@
                         <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
                     </button>
                     <div class="faq-answer px-6">
-                        <p class="text-gray-500 leading-relaxed pb-6">התהליך תמיד רלוונטי. הDNA התעסוקתי הייחודי שלך יכול לשמש גם בצמתים כדי לבחור את הצעד הבא המדויק ביותר לך, או במקום קיים — כדי לדייק את ההתפתחות האישית בתפקיד הנוכחי ובארגון בו נמצאים, להנות יותר מהעשייה ולהצטיין בה.</p>
+                        <p class="text-gray-500 leading-relaxed pb-6">התהליך תמיד רלוונטי. הDNA התעסוקתי הייחודי שלך יכול לשמש גם בצמתים כדי לבחור את הצעד הבא המדויק ביותר לך, או במקום קיים - כדי לדייק את ההתפתחות האישית בתפקיד הנוכחי ובארגון בו נמצאים, להנות יותר מהעשייה ולהצטיין בה.</p>
                     </div>
                 </div>
                 <!-- FAQ 5 -->

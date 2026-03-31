@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workfully — לחברות וארגונים</title>
+    <title>Workfully - לחברות וארגונים</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,7 +27,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'PauzaBook';
+            src: url('fonts/PauzaBook.woff2') format('woff2'),
+                 url('fonts/PauzaBook.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'PauzaLight';
+            src: url('fonts/PauzaLight.woff2') format('woff2'),
+                 url('fonts/PauzaLight.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
         * { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'PauzaBook', 'Inter', sans-serif; letter-spacing: 0.04em; font-weight: 700; }
         html { scroll-behavior: smooth; }
         .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -70,7 +87,7 @@
                     עזרו לעובדים שלכם להגיע ל<span class="text-primary">מקום הנכון</span>
                 </h1>
                 <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto">
-                    שיטה מוכחת שעוזרת לארגונים לדייק התאמות תפקידים, לשפר שביעות רצון עובדים ולהפחית תחלופה — באמצעות גילוי הDNA התעסוקתי של כל עובד.
+                    שיטה מוכחת שעוזרת לארגונים לדייק התאמות תפקידים, לשפר שביעות רצון עובדים ולהפחית תחלופה - באמצעות גילוי הDNA התעסוקתי של כל עובד.
                 </p>
                 <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
                     <i data-lucide="arrow-left" class="w-5 h-5"></i>

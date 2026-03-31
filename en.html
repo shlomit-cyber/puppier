@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workfully — Discover Your Career DNA</title>
+    <title>Workfully - Discover Your Career DNA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,7 +27,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'PauzaBook';
+            src: url('fonts/PauzaBook.woff2') format('woff2'),
+                 url('fonts/PauzaBook.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'PauzaLight';
+            src: url('fonts/PauzaLight.woff2') format('woff2'),
+                 url('fonts/PauzaLight.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
         * { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'PauzaBook', 'Inter', sans-serif; letter-spacing: 0.04em; font-weight: 700; }
         html { scroll-behavior: smooth; }
         .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -101,7 +118,7 @@
                         Discover Your <span class="text-primary">Career DNA</span>
                     </h1>
                     <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-lg">
-                        A personalized AI-guided process that helps you identify your unique motivations, needs, and strengths — so you can find the right place at work.
+                        A personalized AI-guided process that helps you identify your unique motivations, needs, and strengths - so you can find the right place at work.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
@@ -235,7 +252,7 @@
                         </div>
                         <div class="text-sm font-semibold text-secondary mb-2">Step 2</div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Guided Chat with Dana</h3>
-                        <p class="text-gray-500 leading-relaxed">Personal work with Dana, your AI-powered digital guide, who helps you identify your Career DNA — your unique motivations, needs, and strengths.</p>
+                        <p class="text-gray-500 leading-relaxed">Personal work with Dana, your AI-powered digital guide, who helps you identify your Career DNA - your unique motivations, needs, and strengths.</p>
                     </div>
                 </div>
                 <div class="fade-in">
@@ -259,7 +276,7 @@
                 <i data-lucide="award" class="w-6 h-6 text-primary"></i>
             </div>
             <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Based on a Method Developed at Makdemia</h3>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">A unique methodology successfully applied with over 11,000 employees, managers, and job seekers — now available to you in a digital, AI-guided version.</p>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">A unique methodology successfully applied with over 11,000 employees, managers, and job seekers - now available to you in a digital, AI-guided version.</p>
         </div>
     </section>
 
@@ -296,7 +313,7 @@
                     <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
                         <i data-lucide="bot" class="w-5 h-5 text-primary"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Dana — Your Digital Guide</h3>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Dana - Your Digital Guide</h3>
                     <p class="text-gray-500 text-[15px] leading-relaxed">An AI-powered persona that accompanies you throughout the process with deep, personal dialogue.</p>
                 </div>
                 <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
@@ -483,7 +500,7 @@
                         <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
                     </button>
                     <div class="faq-answer px-6">
-                        <p class="text-gray-500 leading-relaxed pb-6">The process is always relevant. Your unique Career DNA can serve you at crossroads to choose the most precise next step, or in your current role — to refine personal development in your current position and organization, enjoy your work more, and excel at it.</p>
+                        <p class="text-gray-500 leading-relaxed pb-6">The process is always relevant. Your unique Career DNA can serve you at crossroads to choose the most precise next step, or in your current role - to refine personal development in your current position and organization, enjoy your work more, and excel at it.</p>
                     </div>
                 </div>
                 <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
@@ -501,7 +518,7 @@
                         <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
                     </button>
                     <div class="faq-answer px-6">
-                        <p class="text-gray-500 leading-relaxed pb-6">At the end of the process, you walk away with your personal Career DNA — unique to you — and concrete suggestions for your path forward based on it.</p>
+                        <p class="text-gray-500 leading-relaxed pb-6">At the end of the process, you walk away with your personal Career DNA - unique to you - and concrete suggestions for your path forward based on it.</p>
                     </div>
                 </div>
             </div>
