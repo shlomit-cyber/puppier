@@ -16,7 +16,8 @@
                         accent: '#DB8A16',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['PauzaBook', 'Inter', 'sans-serif'],
+                        light: ['PauzaLight', 'Inter', 'sans-serif'],
                     }
                 }
             }
@@ -43,8 +44,9 @@
             font-style: normal;
             font-display: swap;
         }
-        * { font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'PauzaBook', 'Inter', sans-serif; letter-spacing: 0.04em; font-weight: 700; }
+        * { font-family: 'PauzaBook', 'Inter', sans-serif; }
+        h1, h2, h3 { letter-spacing: 0.04em; font-weight: 700; }
+        p, .font-light { font-family: 'PauzaLight', 'Inter', sans-serif; }
         html { scroll-behavior: smooth; }
         .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
