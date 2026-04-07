@@ -57,11 +57,14 @@
             gap: 3rem;
             align-items: center;
             width: max-content;
-            animation: marquee var(--duration, 40s) linear infinite;
+            animation: marquee var(--duration, 50s) linear infinite;
+        }
+        .logo-track:hover {
+            animation-play-state: paused;
         }
         @keyframes marquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50% - 1.5rem)); }
+            100% { transform: translateX(-50%); }
         }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
         .faq-answer.open { max-height: 500px; }
@@ -592,11 +595,8 @@
         // Duplicate logo track for seamless infinite scroll
         const track = document.getElementById('logo-track');
         if (track) {
-            const items = Array.from(track.children);
-            items.forEach(item => {
-                const clone = item.cloneNode(true);
-                track.appendChild(clone);
-            });
+            const clone = track.innerHTML;
+            track.innerHTML = clone + clone;
         }
 
         // Scroll animations

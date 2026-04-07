@@ -51,8 +51,17 @@
         html { scroll-behavior: smooth; }
         .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .logo-scroll { animation: scroll-logos 30s linear infinite; }
-        @keyframes scroll-logos {
+        .logo-track {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            width: max-content;
+            animation: marquee var(--duration, 50s) linear infinite;
+        }
+        .logo-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
@@ -206,26 +215,32 @@
     <!-- Logos Banner -->
     <section class="py-12 border-y border-gray-100 bg-gray-50/50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-            <p class="text-center text-sm font-medium text-gray-400">Our method is already used by:</p>
+            <p class="text-center text-lg font-bold text-gray-500">Working with us</p>
         </div>
-        <div class="relative overflow-hidden">
-            <div class="flex logo-scroll gap-16 items-center" style="width: max-content;">
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="building-2" class="w-6 h-6"></i> TechCorp</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="briefcase" class="w-6 h-6"></i> InnovateCo</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="landmark" class="w-6 h-6"></i> BankPlus</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="heart-pulse" class="w-6 h-6"></i> HealthTech</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="graduation-cap" class="w-6 h-6"></i> EduLearn</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="rocket" class="w-6 h-6"></i> LaunchPad</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="shield-check" class="w-6 h-6"></i> SecureNet</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="globe" class="w-6 h-6"></i> GlobalHR</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="building-2" class="w-6 h-6"></i> TechCorp</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="briefcase" class="w-6 h-6"></i> InnovateCo</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="landmark" class="w-6 h-6"></i> BankPlus</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="heart-pulse" class="w-6 h-6"></i> HealthTech</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="graduation-cap" class="w-6 h-6"></i> EduLearn</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="rocket" class="w-6 h-6"></i> LaunchPad</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="shield-check" class="w-6 h-6"></i> SecureNet</div>
-                <div class="flex items-center gap-2 text-gray-300 font-bold text-xl tracking-wider"><i data-lucide="globe" class="w-6 h-6"></i> GlobalHR</div>
+        <div class="relative overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
+            <div id="logo-track" class="logo-track" style="--duration: 50s;">
+                <img src="logos/logo1.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo2.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo3.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo4.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo5.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo6.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo7.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo8.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo9.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo10.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo11.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo12.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo13.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo14.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo15.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo16.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo17.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo18.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo19.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo20.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo21.png" alt="" class="h-12 object-contain opacity-60">
+                <img src="logos/logo22.png" alt="" class="h-12 object-contain opacity-60">
             </div>
         </div>
     </section>
@@ -559,6 +574,13 @@
 
     <script>
         lucide.createIcons();
+
+        // Duplicate logo track for seamless infinite scroll
+        const track = document.getElementById('logo-track');
+        if (track) {
+            const clone = track.innerHTML;
+            track.innerHTML = clone + clone;
+        }
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');

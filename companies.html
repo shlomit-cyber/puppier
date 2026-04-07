@@ -56,11 +56,14 @@
             gap: 3rem;
             align-items: center;
             width: max-content;
-            animation: marquee var(--duration, 40s) linear infinite;
+            animation: marquee var(--duration, 50s) linear infinite;
+        }
+        .logo-track:hover {
+            animation-play-state: paused;
         }
         @keyframes marquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50% - 1.5rem)); }
+            100% { transform: translateX(-50%); }
         }
         nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
         .nav-scrolled { background-color: rgba(255,255,255,0.97); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
@@ -231,11 +234,8 @@
         // Duplicate logo track for seamless infinite scroll
         const track = document.getElementById('logo-track');
         if (track) {
-            const items = Array.from(track.children);
-            items.forEach(item => {
-                const clone = item.cloneNode(true);
-                track.appendChild(clone);
-            });
+            const clone = track.innerHTML;
+            track.innerHTML = clone + clone;
         }
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
