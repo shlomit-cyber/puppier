@@ -599,13 +599,16 @@
         lucide.createIcons();
 
         // Duplicate logo track for seamless infinite scroll
-        (function() {
+        window.addEventListener('load', function() {
             const track = document.getElementById('logo-track');
             if (!track) return;
-            // Clone all children twice to ensure seamless loop
             const original = track.innerHTML;
             track.innerHTML = original + original;
-        })();
+            // Force reflow to restart animation cleanly
+            track.style.animation = 'none';
+            track.offsetHeight;
+            track.style.animation = '';
+        });
 
         // Scroll animations
         const observer = new IntersectionObserver((entries) => {

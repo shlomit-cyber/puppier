@@ -579,12 +579,15 @@
         lucide.createIcons();
 
         // Duplicate logo track for seamless infinite scroll
-        (function() {
+        window.addEventListener('load', function() {
             const track = document.getElementById('logo-track');
             if (!track) return;
             const original = track.innerHTML;
             track.innerHTML = original + original;
-        })();
+            track.style.animation = 'none';
+            track.offsetHeight;
+            track.style.animation = '';
+        });
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
