@@ -55,7 +55,7 @@
             display: flex;
             align-items: center;
             width: max-content;
-            animation: scroll 60s linear infinite;
+            animation: infiniteScroll 60s linear infinite;
         }
         .logo-track:hover {
             animation-play-state: paused;
@@ -64,7 +64,7 @@
             margin: 0 1.5rem;
             flex-shrink: 0;
         }
-        @keyframes scroll {
+        @keyframes infiniteScroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
