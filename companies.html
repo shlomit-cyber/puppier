@@ -51,11 +51,16 @@
         html { scroll-behavior: smooth; }
         .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .logo-track-wrapper {
+            overflow: hidden;
+            direction: ltr;
+        }
         .logo-track {
             display: flex;
             align-items: center;
             width: max-content;
             animation: infiniteScroll 60s linear infinite;
+            direction: ltr;
         }
         .logo-track:hover {
             animation-play-state: paused;
@@ -65,8 +70,8 @@
             flex-shrink: 0;
         }
         @keyframes infiniteScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
         nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
         .nav-scrolled { background-color: rgba(255,255,255,0.97); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
@@ -122,7 +127,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
             <p class="text-center text-lg font-bold text-gray-500">עובדים איתנו</p>
         </div>
-        <div class="relative overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
+        <div class="logo-track-wrapper" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
             <div id="logo-track" class="logo-track">
                 <img src="logos/logo1.png" alt="" class="h-12 object-contain opacity-60">
                 <img src="logos/logo2.png" alt="" class="h-12 object-contain opacity-60">

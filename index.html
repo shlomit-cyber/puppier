@@ -55,11 +55,16 @@
         .logo-carousel {
             overflow: hidden;
         }
+        .logo-track-wrapper {
+            overflow: hidden;
+            direction: ltr;
+        }
         .logo-track {
             display: flex;
             align-items: center;
             width: max-content;
             animation: infiniteScroll 60s linear infinite;
+            direction: ltr;
         }
         .logo-track:hover {
             animation-play-state: paused;
@@ -69,8 +74,8 @@
             flex-shrink: 0;
         }
         @keyframes infiniteScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
         .faq-answer.open { max-height: 500px; }
@@ -224,7 +229,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
             <p class="text-center text-lg font-bold text-gray-500">עובדים איתנו</p>
         </div>
-        <div class="relative overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
+        <div class="logo-track-wrapper" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
             <div id="logo-track" class="logo-track">
                 <img src="logos/logo1.png" alt="" class="h-12 object-contain opacity-60">
                 <img src="logos/logo2.png" alt="" class="h-12 object-contain opacity-60">
