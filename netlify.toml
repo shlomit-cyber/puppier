@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+
+[[plugins]]
+  package = "@netlify/plugin-emails"
+
+# Form notification
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"

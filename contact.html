@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workfully - צרו קשר</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#309C8D',
+                        'primary-dark': '#277f73',
+                        secondary: '#C43E66',
+                        accent: '#DB8A16',
+                    },
+                    fontFamily: {
+                        sans: ['PauzaBook', 'Inter', 'sans-serif'],
+                        light: ['PauzaLight', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @font-face {
+            font-family: 'PauzaBook';
+            src: url('fonts/PauzaBook.woff2') format('woff2'),
+                 url('fonts/PauzaBook.woff') format('woff');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'PauzaLight';
+            src: url('fonts/PauzaLight.woff2') format('woff2'),
+                 url('fonts/PauzaLight.woff') format('woff');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        html { font-size: 17px; }
+        * { font-family: 'PauzaBook', 'Inter', sans-serif; }
+        h1, h2, h3 { letter-spacing: 0.04em; font-weight: 700; }
+        p, .font-light { font-family: 'PauzaLight', 'Inter', sans-serif; font-weight: 700; }
+        input:focus, textarea:focus { outline: none; border-color: #309C8D; box-shadow: 0 0 0 3px rgba(48, 156, 141, 0.1); }
+        nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+        .nav-scrolled { background-color: rgba(255,255,255,0.97); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html"><img src="logo.png" alt="Workfully" class="h-14 self-start mt-2"></a>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">לדף הבית</a>
+                    <a href="index.html#how-it-works" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">איך זה עובד</a>
+                    <a href="companies.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">לארגונים וחברות</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="en.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">EN</a>
+                    <span class="text-gray-300">|</span>
+                    <a href="https://workfully.ai/login" class="text-sm font-medium text-white bg-primary hover:bg-primary-dark transition-colors px-4 py-2 rounded-xl">להתחברות</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Form -->
+    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">נשמח לשמוע מכם</h1>
+                <p class="text-xl text-gray-500">השאירו פרטים ונחזור אליכם בהקדם</p>
+            </div>
+
+            <form id="contact-form" class="space-y-6">
+                <!-- Name -->
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">שם מלא <span class="text-secondary">*</span></label>
+                    <input type="text" name="name" required placeholder="השם שלך"
+                        class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base bg-white transition-all placeholder:text-gray-300">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">אימייל <span class="text-secondary">*</span></label>
+                    <input type="email" name="email" required placeholder="your@email.com" dir="ltr"
+                        class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base bg-white transition-all placeholder:text-gray-300 text-left">
+                </div>
+
+                <!-- Phone -->
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">טלפון</label>
+                    <input type="tel" name="phone" placeholder="050-0000000" dir="ltr"
+                        class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base bg-white transition-all placeholder:text-gray-300 text-left">
+                </div>
+
+                <!-- Message -->
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">פירוט הפנייה</label>
+                    <textarea name="message" rows="4" placeholder="ספרו לנו במה נוכל לעזור..."
+                        class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base bg-white transition-all placeholder:text-gray-300 resize-none"></textarea>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" id="submit-btn"
+                    class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 px-8 rounded-xl text-lg transition-all hover:scale-[1.01] active:scale-[0.99]">
+                    שליחה
+                </button>
+
+                <!-- Success message (hidden by default) -->
+                <div id="success-msg" class="hidden text-center py-8">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="check-circle" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">תודה!</h3>
+                    <p class="text-gray-500 text-lg">הפנייה שלכם התקבלה. נחזור אליכם בהקדם.</p>
+                    <a href="index.html" class="inline-block mt-6 text-primary font-semibold hover:underline">חזרה לעמוד הבית</a>
+                </div>
+
+                <!-- Error message (hidden by default) -->
+                <div id="error-msg" class="hidden text-center py-4">
+                    <p class="text-secondary font-semibold">אירעה שגיאה. אנא נסו שוב או שלחו מייל ישירות ל-efrat@workfully.ai</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center">
+                    <img src="logo.png" alt="Workfully" class="h-12">
+                </div>
+                <div class="flex items-center gap-6 text-sm text-gray-400">
+                    <a href="terms.html" class="hover:text-primary transition-colors">תנאי שימוש</a>
+                    <a href="privacy.html" class="hover:text-primary transition-colors">מדיניות פרטיות</a>
+                    <a href="contact.html" class="hover:text-primary transition-colors">צרו קשר</a>
+                </div>
+                <p class="text-sm text-gray-400">&copy; 2025 Workfully.ai. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('submit-btn');
+            const successMsg = document.getElementById('success-msg');
+            const errorMsg = document.getElementById('error-msg');
+
+            btn.disabled = true;
+            btn.textContent = 'שולח...';
+            errorMsg.classList.add('hidden');
+
+            const data = {
+                name: form.name.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                message: form.message.value
+            };
+
+            try {
+                // Send via mailto fallback - opens email client with pre-filled data
+                const subject = encodeURIComponent('פנייה חדשה מאתר Workfully - ' + data.name);
+                const body = encodeURIComponent(
+                    'שם: ' + data.name + '\n' +
+                    'אימייל: ' + data.email + '\n' +
+                    'טלפון: ' + (data.phone || 'לא צוין') + '\n\n' +
+                    'פירוט הפנייה:\n' + (data.message || 'לא צוין')
+                );
+
+                // Try Netlify Forms first
+                const formData = new FormData();
+                formData.append('form-name', 'contact');
+                formData.append('name', data.name);
+                formData.append('email', data.email);
+                formData.append('phone', data.phone);
+                formData.append('message', data.message);
+
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                });
+
+                if (response.ok) {
+                    form.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
+                } else {
+                    // Fallback to mailto
+                    window.location.href = 'mailto:efrat@workfully.ai?subject=' + subject + '&body=' + body;
+                    form.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
+                }
+            } catch (err) {
+                // Fallback to mailto
+                const subject = encodeURIComponent('פנייה חדשה מאתר Workfully - ' + data.name);
+                const body = encodeURIComponent(
+                    'שם: ' + data.name + '\n' +
+                    'אימייל: ' + data.email + '\n' +
+                    'טלפון: ' + (data.phone || 'לא צוין') + '\n\n' +
+                    'פירוט הפנייה:\n' + (data.message || 'לא צוין')
+                );
+                window.location.href = 'mailto:efrat@workfully.ai?subject=' + subject + '&body=' + body;
+                form.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'שליחה';
+        });
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('nav-scrolled', window.scrollY > 20);
+        });
+    </script>
+
+    <!-- Netlify Forms hidden form for detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input name="bot-field">
+        <input name="name">
+        <input name="email">
+        <input name="phone">
+        <textarea name="message"></textarea>
+    </form>
+</body>
+</html>
