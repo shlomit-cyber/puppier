@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workfully.ai - One Pager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#309C8D',
+                        'primary-dark': '#277f73',
+                        secondary: '#C43E66',
+                        accent: '#DB8A16',
+                    },
+                    fontFamily: {
+                        sans: ['PauzaBook', 'Inter', 'sans-serif'],
+                        light: ['PauzaLight', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'PauzaBook';
+            src: url('fonts/PauzaBook.woff2') format('woff2'),
+                 url('fonts/PauzaBook.woff') format('woff');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'PauzaLight';
+            src: url('fonts/PauzaLight.woff2') format('woff2'),
+                 url('fonts/PauzaLight.woff') format('woff');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        html { font-size: 17px; }
+        * { font-family: 'PauzaBook', 'Inter', sans-serif; }
+        h1, h2, h3 { letter-spacing: 0.04em; font-weight: 700; }
+        p, li, .font-light { font-family: 'PauzaLight', 'Inter', sans-serif; font-weight: 700; }
+        html { scroll-behavior: smooth; }
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        @media print {
+            .fade-in { opacity: 1; transform: none; }
+            .no-print { display: none; }
+            body { font-size: 14px; }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="logo.png" alt="Workfully" class="h-14">
+            </div>
+            <a href="index.html" class="no-print text-sm font-medium text-gray-500 hover:text-primary transition-colors flex items-center gap-1">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                לאתר
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero / Mission -->
+    <section class="pt-16 pb-12">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="fade-in">
+                <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-xl text-sm font-medium mb-6">
+                    <i data-lucide="target" class="w-4 h-4"></i>
+                    One Pager
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                    לעזור לאנשים למצוא את הדרך חזרה<br>לעבודה - <span class="text-primary">באופן שניתן להתמיד בו</span>
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="py-12 bg-gray-50/50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-start fade-in">
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center">
+                            <i data-lucide="alert-circle" class="w-5 h-5 text-secondary"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">הבעיה</h2>
+                    </div>
+                    <p class="text-gray-500 leading-relaxed text-lg">
+                        אנשים המתמודדים עם משבר או שינוי משמעותי בחייהם מתקשים לחזור לעבודה - לא בהכרח בשל חוסר יכולת, אלא בשל פער בין מצבם הנוכחי לבין דרישות התפקיד וסביבת העבודה.
+                    </p>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-2xl p-7">
+                    <p class="text-gray-500 leading-relaxed">
+                        רבים אינם יודעים לזהות מה השתנה עבורם, מה מתאים להם כעת וכיצד לתרגם זאת לצעדים תעסוקתיים ישימים. מענים קיימים מתמקדים בהכוונה ובתמיכה, אך לעיתים חסרים כלים שיטתיים ואישיים המתרגמים הבנה עצמית להחלטות תעסוקתיות קונקרטיות - דבר המקשה על חזרה לעבודה ועל שימור לאורך זמן.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="py-12">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="fade-in">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center">
+                        <i data-lucide="lightbulb" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">הפתרון</h2>
+                </div>
+                <div class="bg-primary/5 border border-primary/20 rounded-2xl p-8 mb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        פלטפורמה דיגיטלית המסייעת לאנשים להבין מה מתאים להם כיום בעולם העבודה, באמצעות תרגום של חוזקות, צרכים ומניעי מוטיבציה לכיוונים תעסוקתיים ברורים וישימים.
+                    </p>
+                </div>
+                <p class="text-gray-500 leading-relaxed text-lg max-w-4xl">
+                    Workfully מאפשר לאנשים להבין מה השתנה עבורם, לזהות מה מתאים להם כיום, ולהתקדם לעבר תפקידים וסביבות עבודה שניתן להתמיד בהם - באופן שמותאם למצבם ותומך בחזרה יציבה לעבודה לאורך זמן. מתאים למגוון אוכלוסיות, כולל אנשים המתמודדים עם משבר או שינוי משמעותי בחיים או בקריירה.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-12 bg-primary">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="fade-in">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-11 h-11 bg-white/15 rounded-xl flex items-center justify-center">
+                        <i data-lucide="settings" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">איך זה עובד</h2>
+                </div>
+                <p class="text-white/85 leading-relaxed text-lg max-w-4xl">
+                    שיחת עומק מבוססת AI המתרגמת התבוננות אישית לכיוונים תעסוקתיים ברורים ולצעדים מעשיים - ותומכת בתהליך חזרה לעבודה וביכולת להתמיד בה לאורך זמן.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="py-12">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="fade-in">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center">
+                        <i data-lucide="bar-chart-3" class="w-5 h-5 text-accent"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">השפעה מוכחת</h2>
+                </div>
+                <p class="text-gray-500 leading-relaxed mb-8">נבדק והופעל בתוכניות בשטח:</p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center border-t-4 border-t-primary">
+                        <div class="text-3xl sm:text-4xl font-bold text-primary mb-1">11K+</div>
+                        <p class="text-gray-500 text-sm">משתמשים בתהליכים פרונטליים</p>
+                    </div>
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center border-t-4 border-t-secondary">
+                        <div class="text-3xl sm:text-4xl font-bold text-secondary mb-1">NPS 76</div>
+                        <p class="text-gray-500 text-sm">נכונות גבוהה להמליץ</p>
+                    </div>
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center border-t-4 border-t-accent">
+                        <div class="text-3xl sm:text-4xl font-bold text-accent mb-1">100+</div>
+                        <p class="text-gray-500 text-sm">ארגונים, רבים בשיתוף ארוך טווח</p>
+                    </div>
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center border-t-4 border-t-primary">
+                        <div class="text-3xl sm:text-4xl font-bold text-primary mb-1">2.6→4.5</div>
+                        <p class="text-gray-500 text-sm">עלייה בבהירות תעסוקתית (מתוך 5)</p>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm mt-4">* על בסיס 3 פיילוטים דיגיטליים</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operating Model -->
+    <section class="py-12 bg-gray-50/50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="fade-in">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center">
+                        <i data-lucide="layers" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">מודל הפעלה</h2>
+                </div>
+                <p class="text-gray-500 leading-relaxed text-lg mb-8">מודל גמיש המותאם לצרכי התוכנית:</p>
+                <div class="grid sm:grid-cols-3 gap-6">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all">
+                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="users" class="w-5 h-5 text-primary"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">הפעלה ישירה</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">על ידי צוות Workfully</p>
+                    </div>
+                    <div class="bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all">
+                        <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-secondary"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">שילוב בתוכניות</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">הכשרת אנשי מקצוע והטמעה בתוכניות קיימות</p>
+                    </div>
+                    <div class="bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all">
+                        <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="monitor-smartphone" class="w-5 h-5 text-accent"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">מודל היברידי</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">מבוסס פלטפורמה עם מינימום ליווי אנושי</p>
+                    </div>
+                </div>
+                <p class="text-gray-500 leading-relaxed mt-6">
+                    המודל מאפשר התאמה למגוון תרחישי הפעלה והרחבה להיקפים משתנים, תוך שמירה על חוויה אישית ועומס תפעולי נמוך.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Context -->
+    <section class="py-12">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 fade-in">
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <i data-lucide="globe" class="w-5 h-5 text-primary"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">הקשר שוק</h2>
+                    </div>
+                    <p class="text-gray-500 leading-relaxed text-lg">
+                        Workfully פועל בצומת שבין הכוון תעסוקתי מותאם אישית, פיתוח הון אנושי וכלים דיגיטליים מבוססי נתונים.
+                        בעולם תעסוקה המשתנה, עולה הצורך בפתרונות המשלבים עומק אישי עם יכולת להרחבה - ומאפשרים התאמה מדויקת למציאות משתנה.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center">
+                            <i data-lucide="diamond" class="w-5 h-5 text-accent"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">מה מייחד אותנו</h2>
+                    </div>
+                    <p class="text-gray-500 leading-relaxed text-lg">
+                        רוב הפתרונות הקיימים מתמקדים באבחון, ליווי או תמיכה - אך חסר בהם שלב קריטי של תרגום התובנות האישיות לכיווני פעולה תעסוקתיים ברורים.
+                    </p>
+                    <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6 mt-4">
+                        <p class="text-gray-700 leading-relaxed">
+                            Workfully מתמקד בדיוק בפער הזה: הפיכת הבנה אישית לכיוונים תעסוקתיים ישימים, באמצעות תהליך דינמי מבוסס שיחה. בכך הוא מאפשר למשתתפים לא רק להבין את עצמם טוב יותר, אלא גם לפעול בהתאם - באופן שמותאם למצבם ותומך בחזרה לעבודה שניתן להתמיד בה לאורך זמן.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="py-12 bg-gray-50/50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="fade-in">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center">
+                        <i data-lucide="heart-handshake" class="w-5 h-5 text-secondary"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">הצוות</h2>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">צוות מקדמיה</h3>
+                    <p class="text-gray-500 leading-relaxed text-lg mb-6">
+                        מעל עשור של ניסיון בפיתוח וליווי תהליכים בתחום הקריירה והתעסוקה, עם אלפי משתתפים וארגונים.
+                    </p>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="dna" class="w-4 h-4 text-primary"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">מתודולוגיה מוכחת (DNA תעסוקתי)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="rocket" class="w-4 h-4 text-secondary"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">ניסיון בהטמעה והפעלה בשטח</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="users" class="w-4 h-4 text-accent"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">עבודה עם אוכלוסיות מגוונות</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="repeat" class="w-4 h-4 text-primary"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">צמתי שינוי ומעברי קריירה</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-primary">
+        <div class="max-w-3xl mx-auto px-6 text-center fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">רוצים לשמוע עוד?</h2>
+            <p class="text-xl text-white/80 mb-8">נשמח לספר, להציג ולהתאים את הפתרון עבורכם.</p>
+            <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-primary font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                צרו קשר
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center">
+                    <img src="logo.png" alt="Workfully" class="h-10">
+                </div>
+                <p class="text-sm text-gray-400">&copy; 2025 Workfully.ai. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
