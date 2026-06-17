@@ -136,6 +136,29 @@
             [data-parallax] { transform: none !important; }
             .timeline-line::after { transition: none; }
         }
+
+        /* ===== Animated chat mockup (hero) — RTL ===== */
+        .chat-bubble {
+            max-width: 80%; padding: 0.6rem 0.9rem; border-radius: 1rem;
+            font-size: 0.92rem; line-height: 1.45; word-break: break-word;
+            opacity: 0; transform: translateY(8px); animation: bubbleIn 0.35s ease forwards;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+        @keyframes bubbleIn { to { opacity: 1; transform: translateY(0); } }
+        .chat-bubble.dana { align-self: flex-start; background: #fff; color: #374151; border: 1px solid #eef0f2; border-bottom-right-radius: 0.3rem; }
+        .chat-bubble.user { align-self: flex-end; background: #309C8D; color: #fff; border-bottom-left-radius: 0.3rem; }
+        .chat-typing {
+            align-self: flex-start; display: inline-flex; gap: 4px; align-items: center;
+            padding: 0.75rem 0.9rem; background: #fff; border: 1px solid #eef0f2;
+            border-radius: 1rem; border-bottom-right-radius: 0.3rem;
+            opacity: 0; animation: bubbleIn 0.25s ease forwards;
+        }
+        .chat-typing.user { align-self: flex-end; background: #309C8D; border-color: #309C8D; border-bottom-right-radius: 1rem; border-bottom-left-radius: 0.3rem; }
+        .chat-typing span { width: 7px; height: 7px; border-radius: 9999px; background: #cbd5e1; animation: chatDot 1.2s infinite ease-in-out; }
+        .chat-typing.user span { background: rgba(255, 255, 255, 0.75); }
+        .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes chatDot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-4px); opacity: 1; } }
     </style>
 </head>
 <body class="bg-white text-gray-800 antialiased">
@@ -211,27 +234,28 @@
                     </div>
                 </div>
 
-                <!-- Hero Video Mockup -->
+                <!-- Hero Animated Chat Mockup -->
                 <div class="fade-in lg:order-first">
-                    <div class="relative" data-parallax="0.04">
-                        <!-- Laptop frame -->
-                        <div class="bg-primary rounded-2xl p-3 pb-0">
-                            <!-- Screen bezel top -->
-                            <div class="bg-primary rounded-t-xl flex items-center gap-1.5 px-4 py-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-primary-dark"></span>
-                                <span class="w-2.5 h-2.5 rounded-full bg-primary-dark"></span>
-                                <span class="w-2.5 h-2.5 rounded-full bg-primary-dark"></span>
-                            </div>
-                            <!-- Video screen -->
-                            <div class="bg-white rounded-t-lg overflow-hidden">
-                                <video autoplay muted loop playsinline class="w-full block">
-                                    <source src="demo.mp4" type="video/mp4">
-                                </video>
+                    <div class="chat-mock relative mx-auto w-full max-w-sm bg-white rounded-[2rem] shadow-xl border border-gray-100 overflow-hidden" data-parallax="0.04">
+                        <!-- Header -->
+                        <div class="flex items-center gap-3 bg-primary px-5 py-4">
+                            <img src="dana.png" alt="דנה" class="w-11 h-11 rounded-full object-cover ring-2 ring-white/40">
+                            <div class="leading-tight">
+                                <div class="font-bold text-white">דנה</div>
+                                <div class="text-xs text-white/80 flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-300"></span> מחוברת
+                                </div>
                             </div>
                         </div>
-                        <!-- Laptop base -->
-                        <div class="bg-primary h-3 rounded-b-xl mx-auto w-full"></div>
-                        <div class="bg-primary-dark h-1.5 rounded-b-lg mx-auto" style="width: 35%;"></div>
+                        <!-- Messages (animated via JS) -->
+                        <div id="chat-body" class="flex flex-col justify-end gap-3 px-4 py-5 bg-gray-50 min-h-[340px]"></div>
+                        <!-- Input bar (decorative) -->
+                        <div class="flex items-center gap-2 px-4 py-3 bg-white border-t border-gray-100">
+                            <div class="flex-1 h-9 rounded-full bg-gray-100"></div>
+                            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="arrow-up" class="w-4 h-4 text-white"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -770,6 +794,46 @@
                 updateParallax();
             }
         }
+
+        // ===== Animated chat demo (hero) =====
+        (function initChatDemo() {
+            const body = document.getElementById('chat-body');
+            if (!body) return;
+            const convo = [
+                { from: 'dana', text: "הי, אני דנה (: ספר לי על מקרה שעשית משהו ומאוד נהנית?" },
+                { from: 'user', text: "היה איזשהו אתגר בעבודה שאף אחד אחר לא הצליח לפצח בארגון" },
+                { from: 'dana', text: "הסקרנות הזו היא חוזקה אמיתית - בוא נצלול לתוך זה" }
+            ];
+            const addBubble = (msg) => {
+                const b = document.createElement('div');
+                b.className = 'chat-bubble ' + msg.from;
+                b.textContent = msg.text;
+                body.appendChild(b);
+            };
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                convo.forEach(addBubble);
+                return;
+            }
+            const timers = [];
+            const clearTimers = () => { timers.forEach(clearTimeout); timers.length = 0; };
+            function run() {
+                clearTimers();
+                body.innerHTML = '';
+                let delay = 500;
+                convo.forEach((msg) => {
+                    timers.push(setTimeout(() => {
+                        const t = document.createElement('div');
+                        t.className = 'chat-typing ' + msg.from;
+                        t.innerHTML = '<span></span><span></span><span></span>';
+                        body.appendChild(t);
+                        timers.push(setTimeout(() => { t.remove(); addBubble(msg); }, 1100));
+                    }, delay));
+                    delay += 1100 + 1000;
+                });
+                timers.push(setTimeout(run, delay + 2800));
+            }
+            run();
+        })();
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
