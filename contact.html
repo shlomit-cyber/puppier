@@ -164,31 +164,19 @@
             btn.textContent = 'שולח...';
             errorMsg.classList.add('hidden');
 
-            const data = {
-                name: form.name.value,
-                email: form.email.value,
-                phone: form.phone.value,
-                message: form.message.value
+            // Build the body from the live form fields. Using new FormData(form)
+            // avoids the form.name collision (the "name" input shadows the form's
+            // built-in name property), which otherwise sent the name field empty.
+            const formData = new FormData(form);
+            formData.append('form-name', 'contact');
+
+            const showError = () => {
+                errorMsg.classList.remove('hidden');
+                btn.disabled = false;
+                btn.textContent = 'שליחה';
             };
 
             try {
-                // Send via mailto fallback - opens email client with pre-filled data
-                const subject = encodeURIComponent('פנייה חדשה מאתר Workfully - ' + data.name);
-                const body = encodeURIComponent(
-                    'שם: ' + data.name + '\n' +
-                    'אימייל: ' + data.email + '\n' +
-                    'טלפון: ' + (data.phone || 'לא צוין') + '\n\n' +
-                    'פירוט הפנייה:\n' + (data.message || 'לא צוין')
-                );
-
-                // Try Netlify Forms first
-                const formData = new FormData();
-                formData.append('form-name', 'contact');
-                formData.append('name', data.name);
-                formData.append('email', data.email);
-                formData.append('phone', data.phone);
-                formData.append('message', data.message);
-
                 const response = await fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -199,27 +187,13 @@
                     form.classList.add('hidden');
                     successMsg.classList.remove('hidden');
                 } else {
-                    // Fallback to mailto
-                    window.location.href = 'mailto:efrat@workfully.ai?subject=' + subject + '&body=' + body;
-                    form.classList.add('hidden');
-                    successMsg.classList.remove('hidden');
+                    // Honest failure: keep the form open, show the error so the
+                    // user can retry or email efrat directly. No false "thank you".
+                    showError();
                 }
             } catch (err) {
-                // Fallback to mailto
-                const subject = encodeURIComponent('פנייה חדשה מאתר Workfully - ' + data.name);
-                const body = encodeURIComponent(
-                    'שם: ' + data.name + '\n' +
-                    'אימייל: ' + data.email + '\n' +
-                    'טלפון: ' + (data.phone || 'לא צוין') + '\n\n' +
-                    'פירוט הפנייה:\n' + (data.message || 'לא צוין')
-                );
-                window.location.href = 'mailto:efrat@workfully.ai?subject=' + subject + '&body=' + body;
-                form.classList.add('hidden');
-                successMsg.classList.remove('hidden');
+                showError();
             }
-
-            btn.disabled = false;
-            btn.textContent = 'שליחה';
         });
 
         window.addEventListener('scroll', () => {

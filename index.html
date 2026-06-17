@@ -81,6 +81,61 @@
         .faq-answer.open { max-height: 500px; }
         nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
         .nav-scrolled { background-color: rgba(255,255,255,0.97); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+        /* ===== Scroll-reveal + perf ===== */
+        .fade-in { will-change: opacity, transform; }
+        [data-parallax] { will-change: transform; }
+
+        /* ===== Counting stat ===== */
+        .stat-count { font-variant-numeric: tabular-nums; }
+
+        /* ===== Nav link underline (grows from right, RTL) ===== */
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; right: 0; left: 0;
+            height: 2px; background: currentColor; border-radius: 2px;
+            transform: scaleX(0); transform-origin: right center;
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover::after { transform: scaleX(1); }
+
+        /* ===== Interactive timeline (How it works) ===== */
+        .timeline { position: relative; }
+        .timeline-line {
+            position: absolute; top: 2.25rem; left: 25%; right: 25%;
+            height: 3px; background: #e5e7eb; border-radius: 9999px; overflow: hidden; z-index: 0;
+        }
+        .timeline-line::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to left, #309C8D, #C43E66);
+            clip-path: inset(0 0 0 100%);
+            transition: clip-path 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .timeline.drawn .timeline-line::after { clip-path: inset(0 0 0 0); }
+        .timeline-step { position: relative; z-index: 1; }
+        .timeline-node {
+            width: 4.5rem; height: 4.5rem; margin: 0 auto 2rem; border-radius: 9999px;
+            display: flex; align-items: center; justify-content: center;
+            background: #fff; border: 3px solid #e5e7eb;
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.45s ease, background-color 0.45s ease, box-shadow 0.45s ease;
+        }
+        .timeline-num { font-size: 1.5rem; font-weight: 700; color: #9ca3af; transition: color 0.45s ease; }
+        .timeline-step[data-step="1"].is-active .timeline-node { border-color: #309C8D; background: rgba(48, 156, 141, 0.08); }
+        .timeline-step[data-step="1"].is-active .timeline-num { color: #309C8D; }
+        .timeline-step[data-step="2"].is-active .timeline-node { border-color: #C43E66; background: rgba(196, 62, 102, 0.08); }
+        .timeline-step[data-step="2"].is-active .timeline-num { color: #C43E66; }
+        .timeline-step:hover .timeline-node { transform: scale(1.08) translateY(-3px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08); }
+        .timeline-card { transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; }
+        .timeline-step:hover .timeline-card { transform: translateY(-6px); box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.15); }
+        .timeline-card .icon-box { transition: transform 0.35s ease; }
+        .timeline-step:hover .icon-box { transform: scale(1.08); }
+
+        /* ===== Reduced motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { transition: none; transform: none; opacity: 1; }
+            [data-parallax] { transform: none !important; }
+            .timeline-line::after { transition: none; }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 antialiased">
@@ -96,11 +151,11 @@
 
                 <!-- Center: Nav tabs (desktop) -->
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="#how-it-works" class="text-lg font-medium text-gray-600 hover:text-primary transition-colors">איך זה עובד</a>
-                    <a href="#features" class="text-lg font-medium text-gray-600 hover:text-primary transition-colors">מה תקבלו</a>
-                    <a href="#testimonials" class="text-lg font-medium text-gray-600 hover:text-primary transition-colors">מה אומרים</a>
-                    <a href="#faq" class="text-lg font-medium text-gray-600 hover:text-primary transition-colors">שאלות נפוצות</a>
-                    <a href="companies.html" class="text-lg font-medium text-gray-600 hover:text-primary transition-colors">לארגונים וחברות</a>
+                    <a href="#how-it-works" class="nav-link text-lg font-medium text-gray-600 hover:text-primary transition-colors">איך זה עובד</a>
+                    <a href="#features" class="nav-link text-lg font-medium text-gray-600 hover:text-primary transition-colors">מה תקבלו</a>
+                    <a href="#testimonials" class="nav-link text-lg font-medium text-gray-600 hover:text-primary transition-colors">מה אומרים</a>
+                    <a href="#faq" class="nav-link text-lg font-medium text-gray-600 hover:text-primary transition-colors">שאלות נפוצות</a>
+                    <a href="companies.html" class="nav-link text-lg font-medium text-gray-600 hover:text-primary transition-colors">לארגונים וחברות</a>
                 </div>
 
                 <!-- Left side: Login + Language -->
@@ -139,14 +194,14 @@
                         להגיע <span class="text-primary">למקום הנכון</span>
                     </h1>
                     <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-lg">
-                        הצעד הבא בקריירה לא נמצא בשאלון. הוא נמצא בשיחה עמוקה עם דנה, היועצת הדיגיטלית שלנו, שמגדירה את הערך הייחודי שלך - ומלווה אותך יד ביד עד למקום הנכון.
+                        הצעד הבא בקריירה לא נמצא בשאלון. הוא נמצא בשיחה עמוקה עם דנה, היועצת הדיגיטלית שלנו, שחושפת את פרופיל מקום העבודה האידאלי שלך – ומלווה אותך יד ביד כל הדרך אליו.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
-                            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                        <a href="contact.html" class="group inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-95">
+                            <i data-lucide="arrow-left" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1"></i>
                             אני רוצה להתחיל
                         </a>
-                        <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 border-2 border-gray-200 hover:border-primary text-gray-700 hover:text-primary font-medium px-8 py-4 rounded-xl text-lg transition-all">
+                        <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 border-2 border-gray-200 hover:border-primary text-gray-700 hover:text-primary font-medium px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:shadow-sm active:scale-95">
                             איך זה עובד?
                         </a>
                     </div>
@@ -158,7 +213,7 @@
 
                 <!-- Hero Video Mockup -->
                 <div class="fade-in lg:order-first">
-                    <div class="relative">
+                    <div class="relative" data-parallax="0.04">
                         <!-- Laptop frame -->
                         <div class="bg-primary rounded-2xl p-3 pb-0">
                             <!-- Screen bezel top -->
@@ -223,27 +278,37 @@
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">איך התהליך עובד?</h2>
                 <p class="text-xl text-gray-500 max-w-2xl mx-auto">שני שלבים שייקחו אותך מחוסר בהירות לכיוון ברור ועד למקום הנכון</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
-                <!-- Step 1 -->
-                <div class="fade-in relative">
-                    <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm h-full border-t-4 border-t-primary">
-                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="search" class="w-6 h-6 text-primary"></i>
+            <div class="timeline max-w-4xl mx-auto fade-in">
+                <!-- Connecting line (desktop) -->
+                <div class="timeline-line hidden md:block"></div>
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                    <!-- Step 1 -->
+                    <div class="timeline-step" data-step="1">
+                        <div class="timeline-node">
+                            <span class="timeline-num">1</span>
                         </div>
-                        <div class="text-sm font-semibold text-primary mb-2">שלב 1</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">לגלות את עצמך</h3>
-                        <p class="text-gray-500 leading-relaxed card-desc">שיחה עמוקה עם דנה שחושפת את ה-DNA התעסוקתי שלך - המוטיבציות, החוזקות והצרכים הייחודיים שלך.</p>
+                        <div class="timeline-card bg-white border border-gray-100 rounded-2xl p-8 h-full border-t-4 border-t-primary">
+                            <div class="icon-box w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                                <i data-lucide="search" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <div class="text-sm font-semibold text-primary mb-2">שלב 1</div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">לגלות את עצמך</h3>
+                            <p class="text-gray-500 leading-relaxed card-desc">שיחה עמוקה עם דנה שחושפת את ה-DNA התעסוקתי שלך - המוטיבציות, החוזקות והצרכים הייחודיים שלך.</p>
+                        </div>
                     </div>
-                </div>
-                <!-- Step 2 -->
-                <div class="fade-in relative">
-                    <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary/30 transition-all hover:shadow-sm h-full border-t-4 border-t-secondary">
-                        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="compass" class="w-6 h-6 text-secondary"></i>
+                    <!-- Step 2 -->
+                    <div class="timeline-step" data-step="2">
+                        <div class="timeline-node">
+                            <span class="timeline-num">2</span>
                         </div>
-                        <div class="text-sm font-semibold text-secondary mb-2">שלב 2</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">לצעוד קדימה</h3>
-                        <p class="text-gray-500 leading-relaxed card-desc">דנה מלווה אותך יד ביד - מנתחת כיוונים ומשרות בהתאמה פרסונלית למה שמתאים ונכון עבורך ומלווה אותך בכל צעד בדרך.</p>
+                        <div class="timeline-card bg-white border border-gray-100 rounded-2xl p-8 h-full border-t-4 border-t-secondary">
+                            <div class="icon-box w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                                <i data-lucide="compass" class="w-6 h-6 text-secondary"></i>
+                            </div>
+                            <div class="text-sm font-semibold text-secondary mb-2">שלב 2</div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">לצעוד קדימה</h3>
+                            <p class="text-gray-500 leading-relaxed card-desc">דנה מלווה אותך יד ביד - מנתחת כיוונים ומשרות בהתאמה פרסונלית למה שמתאים ונכון עבורך ומלווה אותך בכל צעד בדרך.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -257,7 +322,37 @@
                 <i data-lucide="award" class="w-6 h-6 text-white opacity-80"></i>
             </div>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">מבוסס על שיטה שפותחה במקדמיה</h3>
-            <p class="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">שיטה ייחודית שבוצעה בהצלחה עם יותר מ-11,000 עובדים, מנהלים ומחפשי עבודה - עכשיו זמינה לך בגרסה דיגיטלית מונחית AI.</p>
+            <p class="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">שיטה ייחודית שבוצעה בהצלחה עם יותר מ-<span class="stat-count font-bold text-white" data-count="11000">0</span> עובדים, מנהלים ומחפשי עבודה - עכשיו זמינה לך בגרסה דיגיטלית מונחית AI.</p>
+        </div>
+    </section>
+
+    <!-- Pilot Results -->
+    <section class="py-20 lg:py-24 bg-gray-50/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">התוצאות מדברות</h2>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Clarity: before -> after -->
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="flex items-center justify-center gap-3 mb-3">
+                        <span class="text-2xl font-bold text-gray-300 stat-count" data-count="2.7" data-decimals="1">0.0</span>
+                        <i data-lucide="arrow-left" class="w-6 h-6 text-primary translate-y-[3px]"></i>
+                        <span class="text-4xl font-bold text-primary stat-count" data-count="4.5" data-decimals="1">0.0</span>
+                    </div>
+                    <p class="text-gray-500">עלייה בבהירות התעסוקתית <span class="text-gray-400 text-sm">(מתוך 5)</span></p>
+                </div>
+                <!-- Satisfaction -->
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="text-4xl font-bold text-secondary mb-3"><span class="stat-count" data-count="4.7" data-decimals="1">0.0</span><span class="text-2xl text-secondary/60">/5</span></div>
+                    <p class="text-gray-500">שביעות רצון מהתהליך</p>
+                </div>
+                <!-- Recommend -->
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="text-4xl font-bold text-accent mb-3"><span class="stat-count" data-count="4.6" data-decimals="1">0.0</span><span class="text-2xl text-accent/60">/5</span></div>
+                    <p class="text-gray-500">נכונות להמליץ</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -269,43 +364,43 @@
                 <p class="text-xl text-gray-500 max-w-2xl mx-auto">כמה שעות של שיחה אמיתית - ותצאו עם בהירות שאנשים מחפשים שנים.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
-                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
+                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
                         <i data-lucide="heart" class="w-5 h-5 text-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">תבינו מה באמת מניע אתכם</h3>
                     <p class="text-gray-500 leading-relaxed card-desc">תובנות אמיתיות על הערכים, החוזקות והצרכים שמעצבים אתכם בעבודה.</p>
                 </div>
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
-                    <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
+                    <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
                         <i data-lucide="compass" class="w-5 h-5 text-secondary"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">תדעו לאן ללכת</h3>
                     <p class="text-gray-500 leading-relaxed card-desc">כיוונים ומשרות שמתאימים בדיוק למי שאתם - לא המלצות גנריות.</p>
                 </div>
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
-                    <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
+                    <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
                         <i data-lucide="scan-search" class="w-5 h-5 text-accent"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">תנתחו כל משרה בשניות</h3>
                     <p class="text-gray-500 leading-relaxed card-desc">דנה קוראת כל משרה דרך הפריזמה שלכם - ואומרת לכם אם זה מתאים ולמה.</p>
                 </div>
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
-                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
+                    <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
                         <i data-lucide="file-text" class="w-5 h-5 text-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">קורות חיים שמדברים עליכם</h3>
                     <p class="text-gray-500 leading-relaxed card-desc">התאמת קורות החיים למשרה הספציפית - מבוססת על ה-DNA שלכם.</p>
                 </div>
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
-                    <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
+                    <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
                         <i data-lucide="shield-check" class="w-5 h-5 text-secondary"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">תרגישו ביטחון שלא הכרתם</h3>
                     <p class="text-gray-500 leading-relaxed card-desc">לא ביטחון מזויף - ביטחון שנובע מהבנה אמיתית של עצמכם.</p>
                 </div>
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all hover:shadow-sm">
-                    <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
+                    <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
                         <i data-lucide="map-pin" class="w-5 h-5 text-accent"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">תגיעו למקום הנכון</h3>
@@ -324,7 +419,7 @@
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <!-- Testimonial 1 -->
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20">
                     <div class="flex items-center gap-1 mb-4">
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
@@ -344,7 +439,7 @@
                     </div>
                 </div>
                 <!-- Testimonial 2 -->
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20">
                     <div class="flex items-center gap-1 mb-4">
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
@@ -364,7 +459,7 @@
                     </div>
                 </div>
                 <!-- Testimonial 3 -->
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20">
                     <div class="flex items-center gap-1 mb-4">
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
@@ -384,7 +479,7 @@
                     </div>
                 </div>
                 <!-- Testimonial 4 -->
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20">
                     <div class="flex items-center gap-1 mb-4">
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
@@ -404,7 +499,7 @@
                     </div>
                 </div>
                 <!-- Testimonial 5 -->
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20">
                     <div class="flex items-center gap-1 mb-4">
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
@@ -424,7 +519,7 @@
                     </div>
                 </div>
                 <!-- Testimonial 6 -->
-                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7">
+                <div class="fade-in bg-white border border-gray-100 rounded-2xl p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20">
                     <div class="flex items-center gap-1 mb-4">
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
                         <i data-lucide="star" class="w-4 h-4 text-accent fill-accent"></i>
@@ -523,8 +618,8 @@
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
             <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">מוכנים לגלות את הDNA התעסוקתי שלכם?</h2>
             <p class="text-xl text-white/80 mb-8">התחילו את התהליך היום ותגיעו למקום הנכון בעבודה.</p>
-            <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-primary font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:scale-[1.02]">
-                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <a href="contact.html" class="group inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-primary font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-95">
+                <i data-lucide="arrow-left" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1"></i>
                 אני רוצה להתחיל
             </a>
         </div>
@@ -563,16 +658,118 @@
             track.style.animation = '';
         });
 
-        // Scroll animations
+        // ===== Scroll reveal with staggered children =====
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Cards in a shared grid reveal one after another
+        if (!reduceMotion) {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                const group = Array.from(el.parentElement.children).filter(c => c.classList.contains('fade-in'));
+                if (group.length > 1) {
+                    el.style.transitionDelay = (group.indexOf(el) * 90) + 'ms';
+                }
+            });
+        }
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ===== Interactive timeline: draw the line, light up nodes =====
+        const timeline = document.querySelector('.timeline');
+        if (timeline) {
+            const tlObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        timeline.classList.add('drawn');
+                        timeline.querySelectorAll('.timeline-step').forEach((step, i) => {
+                            setTimeout(() => step.classList.add('is-active'), 350 + i * 450);
+                        });
+                        obs.unobserve(timeline);
+                    }
+                });
+            }, { threshold: 0.35 });
+            tlObserver.observe(timeline);
+
+            // Anchor the connecting line to the circle perimeters (edge-to-edge), responsive
+            const tlLine = timeline.querySelector('.timeline-line');
+            const nodes = timeline.querySelectorAll('.timeline-node');
+            function positionTimelineLine() {
+                if (!tlLine || nodes.length < 2) return;
+                if (window.innerWidth < 768) { tlLine.style.left = ''; tlLine.style.width = ''; tlLine.style.right = ''; tlLine.style.top = ''; return; }
+                const tl = timeline.getBoundingClientRect();
+                const r0 = nodes[0].getBoundingClientRect();
+                const r1 = nodes[1].getBoundingClientRect();
+                const rightNode = r0.left > r1.left ? r0 : r1;
+                const leftNode = r0.left > r1.left ? r1 : r0;
+                const start = leftNode.right - tl.left;      // line begins at right perimeter of the left circle
+                const end = rightNode.left - tl.left;        // line ends at left perimeter of the right circle
+                tlLine.style.right = 'auto';
+                tlLine.style.left = start + 'px';
+                tlLine.style.width = Math.max(0, end - start) + 'px';
+                tlLine.style.top = (rightNode.top - tl.top + rightNode.height / 2 - tlLine.offsetHeight / 2) + 'px';
+            }
+            positionTimelineLine();
+            window.addEventListener('load', positionTimelineLine);
+            let tlResizeTick = false;
+            window.addEventListener('resize', () => {
+                if (!tlResizeTick) { requestAnimationFrame(() => { positionTimelineLine(); tlResizeTick = false; }); tlResizeTick = true; }
+            });
+        }
+
+        // ===== Count-up numbers =====
+        function animateCount(el) {
+            const decimals = parseInt(el.dataset.decimals, 10) || 0;
+            const target = parseFloat(el.dataset.count) || 0;
+            const fmt = (v) => decimals > 0 ? v.toFixed(decimals) : Math.round(v).toLocaleString('en-US');
+            if (reduceMotion) { el.textContent = fmt(target); return; }
+            const duration = 1600;
+            let startTime = null;
+            function tick(now) {
+                if (startTime === null) startTime = now;
+                const p = Math.min((now - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = fmt(eased * target);
+                if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        }
+        const countObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCount(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+        document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+
+        // ===== Subtle parallax on scroll =====
+        if (!reduceMotion) {
+            const parallaxEls = document.querySelectorAll('[data-parallax]');
+            if (parallaxEls.length) {
+                let ticking = false;
+                const updateParallax = () => {
+                    const y = window.scrollY;
+                    parallaxEls.forEach(el => {
+                        const speed = parseFloat(el.dataset.parallax) || 0.05;
+                        el.style.transform = 'translate3d(0,' + (y * speed) + 'px,0)';
+                    });
+                    ticking = false;
+                };
+                window.addEventListener('scroll', () => {
+                    if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
+                }, { passive: true });
+                updateParallax();
+            }
+        }
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
