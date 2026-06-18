@@ -34,7 +34,7 @@ Static HTML site — **no build step, no framework**. Tailwind via CDN (`cdn.tai
 - `contact.html` — contact form. Others: `companies.html`, `terms.html`, `privacy.html`, `one-pager.html`, `dana-intro.html`.
 
 ### Contact form (contact.html)
-Uses **Netlify Forms** (hidden detection form `name="contact"`; JS submits via `fetch('/')`). Submissions email **efrat@workfully.ai** via a `submission_created` email hook configured in the Netlify dashboard. Notes: form detection must be enabled in the dashboard (it was, + a redeploy registered the form); Netlify notification emails are **delayed several minutes** (expected). The JS uses `new FormData(form)` (not `form.name.value` — `name` collides with the form element's built-in property) and shows the error state on failure (no false "thank you").
+Uses **Web3Forms** — the JS POSTs `new FormData(form)` (+ `access_key`, `subject`, `from_name`) to `https://api.web3forms.com/submit` and emails **efrat@workfully.ai** (the address the Web3Forms account/key is tied to). **Why not Netlify Forms:** Netlify Forms only works on Netlify-hosted sites; the live site is nginx (`workfully.co.il`), so Netlify Forms silently dropped every real submission — only the Netlify preview ever captured anything. Web3Forms is host-agnostic, so it works on the live site. Notes: the access key is public-by-design (client-side). Web3Forms free tier accepts **browser submissions only** (Cloudflare-protected) — you can't test it with server-side curl; test from a real browser and check efrat's inbox (incl. spam). `new FormData(form)` avoids the `form.name` collision; failure shows the error state (no false "thank you").
 
 ## Interactive features (index.html + en.html, kept in sync)
 
