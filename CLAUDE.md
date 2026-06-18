@@ -31,10 +31,12 @@ Static HTML site — **no build step, no framework**. Tailwind via CDN (`cdn.tai
 ### Pages
 - `index.html` — Hebrew, **RTL** (`dir="rtl"`). The canonical page.
 - `en.html` — English, **LTR**. Content-parallel to `index.html`; keep the two in sync when changing copy or structure.
-- `contact.html` — contact form. Others: `companies.html`, `terms.html`, `privacy.html`, `one-pager.html`, `dana-intro.html`.
+- `contact.html` — Hebrew contact form (linked from `index.html`). `contact-en.html` — English LTR version (linked from `en.html`); same Web3Forms backend, no LinkedIn article (it's Hebrew — add when EN content exists). Keep the two contact pages in sync. Others: `companies.html`, `terms.html`, `privacy.html`, `one-pager.html`, `dana-intro.html`.
 
-### Contact form (contact.html)
-Uses **Web3Forms** — the JS POSTs `new FormData(form)` (+ `access_key`, `subject`, `from_name`) to `https://api.web3forms.com/submit` and emails **efrat@workfully.ai** (the address the Web3Forms account/key is tied to). **Why not Netlify Forms:** Netlify Forms only works on Netlify-hosted sites; the live site is nginx (`workfully.co.il`), so Netlify Forms silently dropped every real submission — only the Netlify preview ever captured anything. Web3Forms is host-agnostic, so it works on the live site. Notes: the access key is public-by-design (client-side). Web3Forms free tier accepts **browser submissions only** (Cloudflare-protected) — you can't test it with server-side curl; test from a real browser and check efrat's inbox (incl. spam). `new FormData(form)` avoids the `form.name` collision; failure shows the error state (no false "thank you").
+### Contact form (contact.html + contact-en.html)
+Uses **Web3Forms** — the JS POSTs `new FormData(form)` (+ `access_key`, `subject`, `from_name`) to `https://api.web3forms.com/submit` and emails **efrat@workfully.ai** (the address the Web3Forms account/key is tied to). **Why not Netlify Forms:** Netlify Forms only works on Netlify-hosted sites; the live site is nginx (`workfully.co.il`), so Netlify Forms silently dropped every real submission — only the Netlify preview ever captured anything. Web3Forms is host-agnostic, so it works on the live site. Notes: the access key is public-by-design (client-side). Web3Forms free tier accepts **browser submissions only** (Cloudflare-protected) — you can't test it with server-side curl; test from a real browser and check efrat's inbox (incl. spam). `new FormData(form)` avoids the `form.name` collision.
+
+**On submit:** success hides the form and reveals `#success-msg` (a warm "תודה שפניתם…" message + a "read more" link to a LinkedIn article — HE only); failure reveals `#error-msg` and keeps the form open (no false "thank you"). **Critical: `#success-msg` and `#error-msg` must live OUTSIDE the `<form>`.** The JS hides the form with `form.classList.add('hidden')`; when the messages were *inside* the form they got hidden too, so the success message never appeared (the page showed just the heading + a blank area). They are now siblings after `</form>` — keep them there.
 
 ## Interactive features (index.html + en.html, kept in sync)
 
