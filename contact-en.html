@@ -114,22 +114,22 @@
                     class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 px-8 rounded-xl text-lg transition-all hover:scale-[1.01] active:scale-[0.99]">
                     Send
                 </button>
-
-                <!-- Success message (hidden by default) -->
-                <div id="success-msg" class="hidden text-center py-8">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="check-circle" class="w-8 h-8 text-primary"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Thank you for reaching out — glad you're here :)</h3>
-                    <p class="text-gray-500 text-lg">We're already going over your details and will get back to you soon.</p>
-                    <a href="en.html" class="inline-block mt-6 text-gray-400 text-sm hover:text-primary transition-colors">Back to home</a>
-                </div>
-
-                <!-- Error message (hidden by default) -->
-                <div id="error-msg" class="hidden text-center py-4">
-                    <p class="text-secondary font-semibold">Something went wrong. Please try again or email us directly at efrat@workfully.ai</p>
-                </div>
             </form>
+
+            <!-- Success message (hidden by default) — OUTSIDE the form so hiding the form doesn't hide it -->
+            <div id="success-msg" class="hidden text-center py-8">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="check-circle" class="w-8 h-8 text-primary"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Thank you for reaching out — glad you're here :)</h3>
+                <p class="text-gray-500 text-lg">We're already going over your details and will get back to you soon.</p>
+                <a href="en.html" class="inline-block mt-6 text-gray-400 text-sm hover:text-primary transition-colors">Back to home</a>
+            </div>
+
+            <!-- Error message (hidden by default) -->
+            <div id="error-msg" class="hidden text-center py-4">
+                <p class="text-secondary font-semibold">Something went wrong. Please try again or email us directly at efrat@workfully.ai</p>
+            </div>
         </div>
     </section>
 
