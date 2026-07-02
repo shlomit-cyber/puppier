@@ -12,7 +12,7 @@
 - Use Lucide icons (no emoji)
 
 ## DON'T
-- No bright/saturated gradients or gradient text
+- No bright/saturated gradients or gradient text (two approved *subtle* exceptions: the timeline connector, and the hero warmth tint — see Interactive features)
 - No emoji (use Lucide icons)
 - No marketing copy like "revolutionary", "game-changer"
 - No heavy shadows or busy patterns
@@ -49,3 +49,4 @@ Both pages share the same JS patterns; **RTL vs LTR differences are deliberate**
 - **Subtle parallax** — `[data-parallax="<speed>"]` translateY on scroll (rAF, reduced-motion-aware). Applied to the hero mockup. Put it on a non-`.fade-in` element to avoid transform conflicts.
 - **Micro-interactions** — cards lift + shadow + icon scale on hover (`group`/`group-hover`); CTA buttons slide their arrow + `active:scale-95`; nav links have a `.nav-link` underline that grows (from right in RTL, left in LTR).
 - **Animated chat mockup (both heroes)** — replaces the old hero visuals (en.html's static SVG and index.html's `demo.mp4` laptop video — `demo.mp4` is now unused). A chat window with Dana's avatar (`dana.png`, copied from the career app) that loops: Dana "types" (bouncing dots) → message appears → user types → reply, then restarts (`initChatDemo`, `convo` array in each page's script — edit it to change the text). RTL vs LTR differ: bubble tails mirror (Dana right in HE / left in EN) and the `convo` text is Hebrew vs English. `prefers-reduced-motion` shows the full conversation statically.
+- **Hero warmth refinement (index + en, live)** — a small, self-contained `<style>` block (marked "Hero warmth refinement") plus classes: `hero-warm` (very soft pale-mint→white gradient tint behind the hero **only**), `hero-mock-wrap` (mint radial glow + green-tinted shadow behind the chat mockup so it doesn't float on plain white), and small green accents `hero-cta` (CTA hover glow), `hero-send` (chat send-button glow) and `text-primary` on the proof-line sparkles icon. The pale-mint gradient is the approved subtle exception to the "no gradients" DON'T. Hero-only — no typography/spacing/copy/structure changes. Keep index.html and en.html in sync; per-page block comments carry the revert steps.
