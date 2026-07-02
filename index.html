@@ -160,6 +160,36 @@
         .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes chatDot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-4px); opacity: 1; } }
     </style>
+    <!-- Hero warmth refinement (subtle, hero-only). Revert = delete this block + the
+         hero-warm / hero-mock-wrap / hero-cta / hero-send classes + the sparkles text-primary. -->
+    <style>
+        /* 1. Very soft pale-mint tint behind the hero only, fading to white */
+        .hero-warm {
+            background: linear-gradient(180deg, #EAF6F2 0%, #F1FAF7 42%, #FFFFFF 100%);
+        }
+        /* 3. Gentle mint glow behind the chat mockup so it doesn't float on plain white */
+        .hero-mock-wrap { position: relative; }
+        .hero-mock-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -14% -10% -6% -10%;
+            background: radial-gradient(58% 52% at 50% 44%,
+                        rgba(48, 156, 141, 0.20), rgba(48, 156, 141, 0.07) 55%, rgba(48, 156, 141, 0) 78%);
+            filter: blur(4px);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-mock-wrap .chat-mock {
+            position: relative;
+            z-index: 1;
+            /* soft green-tinted glow + subtle neutral depth */
+            box-shadow: 0 30px 70px -28px rgba(48, 156, 141, 0.34),
+                        0 14px 34px -18px rgba(16, 24, 40, 0.12);
+        }
+        /* 4. Small green accents only */
+        .hero-send { box-shadow: 0 6px 16px rgba(48, 156, 141, 0.38); }
+        .hero-cta:hover { box-shadow: 0 12px 30px -6px rgba(48, 156, 141, 0.45); }
+    </style>
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
@@ -207,7 +237,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-28 pb-20 lg:pt-36 lg:pb-28">
+    <section class="hero-warm pt-28 pb-20 lg:pt-36 lg:pb-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Text -->
@@ -220,7 +250,7 @@
                         הצעד הבא בקריירה לא נמצא בשאלון. הוא נמצא בשיחה עמוקה עם דנה, היועצת הדיגיטלית שלנו, שחושפת את ה-DNA התעסוקתי שלך ואת פרופיל מקום העבודה האידאלי עבורך – ומלווה אותך יד ביד כל הדרך אליו.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="contact.html" class="group inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-95">
+                        <a href="contact.html" class="hero-cta group inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-95">
                             <i data-lucide="arrow-left" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1"></i>
                             אני רוצה להתחיל
                         </a>
@@ -229,13 +259,13 @@
                         </a>
                     </div>
                     <div class="flex items-center gap-2 mt-6 text-sm text-gray-400">
-                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <i data-lucide="sparkles" class="w-4 h-4 text-primary"></i>
                         מבוסס על שיטה שנוסתה עם 11,000+ עובדים, מנהלים ומחפשי עבודה
                     </div>
                 </div>
 
                 <!-- Hero Animated Chat Mockup -->
-                <div class="fade-in lg:order-first">
+                <div class="fade-in lg:order-first hero-mock-wrap">
                     <div class="chat-mock relative mx-auto w-full max-w-sm bg-white rounded-[2rem] shadow-xl border border-gray-100 overflow-hidden" data-parallax="0.04">
                         <!-- Header -->
                         <div class="flex items-center gap-3 bg-primary px-5 py-4">
@@ -252,7 +282,7 @@
                         <!-- Input bar (decorative) -->
                         <div class="flex items-center gap-2 px-4 py-3 bg-white border-t border-gray-100">
                             <div class="flex-1 h-9 rounded-full bg-gray-100"></div>
-                            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                            <div class="hero-send w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="arrow-up" class="w-4 h-4 text-white"></i>
                             </div>
                         </div>
