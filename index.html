@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workfully - להגיע למקום הנכון</title>
+    <title>Workfully - סוף סוף לדעת מה לחפש</title>
+    <meta name="description" content="Workfully.ai היא פלטפורמה לפיתוח קריירה, מבוססת על המתודולוגיה של מקדמיה. דנה, יועצת קריירה דיגיטלית שמכירה אותך לעומק, עוזרת לך לדעת מה לחפש ולהגיע למקום הנכון.">
+    <meta property="og:title" content="Workfully.ai | סוף סוף לדעת מה לחפש.">
+    <meta property="og:description" content="Workfully.ai היא פלטפורמה לפיתוח קריירה, מבוססת על המתודולוגיה של מקדמיה. דנה, יועצת קריירה דיגיטלית שמכירה אותך לעומק, עוזרת לך לדעת מה לחפש ולהגיע למקום הנכון.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -119,6 +122,8 @@
             background: #fff; border: 3px solid #e5e7eb;
             transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.45s ease, background-color 0.45s ease, box-shadow 0.45s ease;
         }
+        /* Mobile: cards stack, so the numbered circles are hidden (each card already says Step 1/2) */
+        @media (max-width: 767px) { .timeline-node { display: none; } }
         .timeline-num { font-size: 1.5rem; font-weight: 700; color: #9ca3af; transition: color 0.45s ease; }
         .timeline-step[data-step="1"].is-active .timeline-node { border-color: #309C8D; background: rgba(48, 156, 141, 0.08); }
         .timeline-step[data-step="1"].is-active .timeline-num { color: #309C8D; }
@@ -163,9 +168,9 @@
     <!-- Hero warmth refinement (subtle, hero-only). Revert = delete this block + the
          hero-warm / hero-mock-wrap / hero-cta / hero-send classes + the sparkles text-primary. -->
     <style>
-        /* 1. Very soft pale-mint tint behind the hero only, fading to white */
+        /* 1. Hero background: plain white (the mint now lives only in the chat-mockup glow below) */
         .hero-warm {
-            background: linear-gradient(180deg, #EAF6F2 0%, #F1FAF7 42%, #FFFFFF 100%);
+            background: #FFFFFF;
         }
         /* 3. Gentle mint glow behind the chat mockup so it doesn't float on plain white */
         .hero-mock-wrap { position: relative; }
@@ -242,19 +247,16 @@
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Text -->
                 <div class="fade-in">
-                    <div class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3"><span class="text-gray-900">Workfully</span><span class="text-primary">.ai</span></div>
-                    <div dir="ltr" class="inline-flex items-center gap-2 mb-4 text-sm font-semibold tracking-wide text-primary">
-                        <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
-                        Vertical AI for Career Development
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                        להגיע <span class="text-primary">למקום הנכון</span>
+                    <div class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-1"><span class="text-[#005A50]">Workfully</span><span class="text-primary">.ai</span></div>
+                    <div class="text-lg sm:text-2xl lg:text-[1.75rem] font-normal text-primary leading-snug mb-6 lg:mb-8">פלטפורמה לפיתוח קריירה</div>
+                    <h1 class="text-[1.625rem] sm:text-4xl lg:text-[2.7rem] font-bold text-gray-900 leading-tight mb-2">
+                        סוף סוף <span class="text-primary">לדעת מה לחפש.</span>
                     </h1>
-                    <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-4 max-w-lg">
-                        Workfully.ai מכירה אתכם לעומק — ואז הופכת את ההיכרות הזו לכלי שעוזר לכם להתקדם.
+                    <p class="text-2xl sm:text-3xl lg:text-4xl font-normal text-gray-800 leading-snug mb-6">
+                        ולהרגיש שהגעת למקום הנכון.
                     </p>
                     <p class="text-lg text-gray-600 leading-relaxed mb-8 max-w-lg">
-                        בשיחה מעמיקה, דנה חושפת את ה-DNA התעסוקתי שלכם: מה מניע אתכם, מהן החוזקות שלכם ובאיזו סביבת עבודה תוכלו להיות במיטבכם. משם, היא עוזרת לכם לבחון כיוונים והזדמנויות, לנתח משרות, לדייק את קורות החיים והלינקדאין, להתכונן לראיונות ולעשות את הצעדים הבאים — בהתאם למה שבאמת נכון לכם.
+                        בשיחה מעמיקה, דנה חושפת את ה-DNA התעסוקתי שלכם: מה מניע אתכם, מהן החוזקות שלכם ובאיזו סביבת עבודה תוכלו להיות במיטבכם. משם, היא עוזרת לכם לבחון כיוונים והזדמנויות, לנתח משרות, לדייק את קורות החיים והלינקדאין, להתכונן לראיונות ולעשות את הצעדים הבאים, בהתאם למה שבאמת נכון לכם.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="contact.html" class="hero-cta group inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-95">
@@ -337,7 +339,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">איך התהליך עובד?</h2>
-                <p class="text-xl text-gray-500 max-w-2xl mx-auto">שני שלבים. מסע אחד רציף — מהבנה עמוקה של עצמכם ועד למציאת המקום הנכון עבורכם.</p>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto">שני שלבים. מסע אחד רציף: מהבנה עמוקה של עצמך ועד המקום הנכון בשבילך.</p>
             </div>
             <div class="timeline max-w-4xl mx-auto fade-in">
                 <!-- Connecting line (desktop) -->
@@ -354,7 +356,7 @@
                             </div>
                             <div class="text-sm font-semibold text-primary mb-2">שלב 1</div>
                             <h3 class="text-xl font-bold text-gray-900 mb-3">לגלות את עצמך</h3>
-                            <p class="text-gray-500 leading-relaxed card-desc">בשיחה מעמיקה, דנה חושפת את ה-DNA התעסוקתי שלכם — מה מניע אתכם, איפה החוזקות שלכם באות לידי ביטוי ואיזו סביבת עבודה מאפשרת לכם להיות במיטבכם.</p>
+                            <p class="text-gray-500 leading-relaxed card-desc">בשיחה מעמיקה, דנה חושפת את ה-DNA התעסוקתי שלכם: מה מניע אתכם, איפה החוזקות שלכם באות לידי ביטוי ואיזו סביבת עבודה מאפשרת לכם להיות במיטבכם.</p>
                         </div>
                     </div>
                     <!-- Step 2 -->
@@ -368,7 +370,7 @@
                             </div>
                             <div class="text-sm font-semibold text-secondary mb-2">שלב 2</div>
                             <h3 class="text-xl font-bold text-gray-900 mb-3">להפוך את התובנות לפעולה</h3>
-                            <p class="text-gray-500 leading-relaxed card-desc">ה-DNA התעסוקתי שלכם הופך לפריזמה שדרכה דנה עוזרת לכם לבחון כל צעד הבא: לחקור כיווני קריירה, לנתח משרות והזדמנויות, לדייק את המיצוב המקצועי שלכם, להתאים קורות חיים ולינקדאין, להתכונן לראיונות ולנסח פניות — הכול על בסיס מה שהיא כבר יודעת עליכם.</p>
+                            <p class="text-gray-500 leading-relaxed card-desc">ה-DNA התעסוקתי שלכם הופך לפריזמה שדרכה דנה עוזרת לכם לבחון כל צעד הבא: לחקור כיווני קריירה, לנתח משרות והזדמנויות, לדייק את המיצוב המקצועי שלכם, להתאים קורות חיים ולינקדאין, להתכונן לראיונות ולנסח פניות, הכול על בסיס מה שהיא כבר יודעת עליכם.</p>
                         </div>
                     </div>
                 </div>
@@ -382,7 +384,7 @@
             <div class="inline-flex items-center gap-2 mb-4">
                 <i data-lucide="award" class="w-6 h-6 text-white opacity-80"></i>
             </div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">מבוסס על שיטה שפותחה במקדמיה</h3>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">מבוסס על המתודולוגיה של מקדמיה</h3>
             <p class="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">שיטה ייחודית שבוצעה בהצלחה עם יותר מ-<span class="stat-count font-bold text-white" data-count="11000">11,000</span> עובדים, מנהלים ומחפשי עבודה - עכשיו זמינה לך בגרסה דיגיטלית מונחית AI.</p>
         </div>
     </section>
@@ -422,8 +424,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">מה תקבלו מהתהליך</h2>
-                <p class="text-xl text-gray-500 max-w-2xl mx-auto">היכרות עמוקה אחת אתכם — שמלווה כל החלטה וכל צעד בקריירה.</p>
-                <p class="text-lg text-gray-400 max-w-2xl mx-auto mt-3">כמה שעות של שיחה אמיתית — ותצאו עם בהירות שאנשים מחפשים שנים.</p>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto">היכרות עמוקה אחת אתכם, שמלווה כל החלטה וכל צעד בקריירה.</p>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto mt-3">כמה שעות של שיחה אמיתית, ותצאו עם בהירות שאנשים מחפשים שנים.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
@@ -438,7 +440,7 @@
                         <i data-lucide="compass" class="w-5 h-5 text-secondary"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">לגלות אפשרויות חדשות</h3>
-                    <p class="text-gray-500 leading-relaxed card-desc">לפתוח כיווני קריירה שאולי לא חשבתם עליהם — ולהבין למה הם עשויים להתאים דווקא לכם.</p>
+                    <p class="text-gray-500 leading-relaxed card-desc">לפתוח כיווני קריירה שאולי לא חשבתם עליהם, ולהבין למה הם עשויים להתאים דווקא לכם.</p>
                 </div>
                 <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
                     <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
@@ -466,7 +468,7 @@
                         <i data-lucide="map-pin" class="w-5 h-5 text-accent"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">להגיע למקום הנכון</h3>
-                    <p class="text-gray-500 leading-relaxed card-desc">להתקדם עם הבנה ברורה יותר של מה אתם מחפשים — ובעיקר למה זה נכון עבורכם.</p>
+                    <p class="text-gray-500 leading-relaxed card-desc">להתקדם עם הבנה ברורה יותר של מה אתם מחפשים, ובעיקר למה זה נכון עבורכם.</p>
                 </div>
             </div>
         </div>
@@ -638,7 +640,7 @@
                         <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
                     </button>
                     <div class="faq-answer px-6">
-                        <p class="text-gray-500 leading-relaxed pb-6">בניגוד לפתרונות אחרים בתחום, Workfully.ai לא מתבססת על שאלון או כלים גנריים. דנה קודם מכירה אתכם לעומק דרך שיחת עומק אמיתית — ומחלצת את המידע הכי חשוב לקבלת החלטות בקריירה, מידע שפעמים רבות לא נגיש או מסודר בצורה אפקטיבית. רק אז היא מנתחת כיוונים ומשרות דרך הפריזמה האישית שלכם. התהליך בנוי על שיטה ייחודית בשם "ארכיאולוגיה התנהגותית", שפותחה לאורך שנים במקדמיה — ארגון הבית של Workfully.ai. דנה מלווה אתכם יד ביד עד להשתלבות במקום שמתאים לכם באמת.</p>
+                        <p class="text-gray-500 leading-relaxed pb-6">בניגוד לפתרונות אחרים בתחום, Workfully.ai לא מתבססת על שאלון או כלים גנריים. דנה קודם מכירה אתכם לעומק דרך שיחת עומק אמיתית, ומחלצת את המידע הכי חשוב לקבלת החלטות בקריירה, מידע שפעמים רבות לא נגיש או מסודר בצורה אפקטיבית. רק אז היא מנתחת כיוונים ומשרות דרך הפריזמה האישית שלכם. התהליך בנוי על שיטה ייחודית בשם "ארכיאולוגיה התנהגותית", שפותחה לאורך שנים במקדמיה. דנה מלווה אתכם יד ביד עד להשתלבות במקום שמתאים לכם באמת.</p>
                     </div>
                 </div>
                 <!-- FAQ: vs. general-purpose AI -->
@@ -648,7 +650,7 @@
                         <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
                     </button>
                     <div class="faq-answer px-6">
-                        <p class="text-gray-500 leading-relaxed pb-6">בינה מלאכותית כללית יכולה לעזור לכם לבצע משימה. Workfully.ai קודם כל מכירה אתכם לעומק — ואז משתמשת בהיכרות הזו לאורך כל מסע הקריירה שלכם.<br><br>דנה לומדת מה מניע אתכם, איפה החוזקות שלכם באות לידי ביטוי, מה אתם צריכים מסביבת העבודה ומה הופך תפקיד למתאים באמת עבורכם. ה-DNA התעסוקתי שנבנה בתהליך הופך להקשר שמלווה כל המלצה בהמשך — בין אם אתם בוחנים כיוון חדש, מנתחים משרה מסוימת, מדייקים קורות חיים או לינקדאין, מתכוננים לראיון או מנסים להחליט מה הצעד הבא.<br><br>Workfully.ai מבוססת גם על מתודולוגיה לפיתוח קריירה שפותחה ושוכללה במקדמיה בעבודה עם יותר מ-11,000 עובדים, מנהלים ומחפשי עבודה.<br><br>כך שבכל פעם שאתם צריכים עזרה, אתם לא מתחילים שיחה חדשה עם AI שלא מכיר אתכם. אתם ממשיכים תהליך שמבוסס על היכרות עמוקה ומתמשכת עם מי שאתם ומה נכון לכם.</p>
+                        <p class="text-gray-500 leading-relaxed pb-6">בינה מלאכותית כללית יכולה לעזור לכם לבצע משימה. Workfully.ai קודם כל מכירה אתכם לעומק, ואז משתמשת בהיכרות הזו לאורך כל מסע הקריירה שלכם.<br><br>דנה לומדת מה מניע אתכם, איפה החוזקות שלכם באות לידי ביטוי, מה אתם צריכים מסביבת העבודה ומה הופך תפקיד למתאים באמת עבורכם. ה-DNA התעסוקתי שנבנה בתהליך הופך להקשר שמלווה כל המלצה בהמשך, בין אם אתם בוחנים כיוון חדש, מנתחים משרה מסוימת, מדייקים קורות חיים או לינקדאין, מתכוננים לראיון או מנסים להחליט מה הצעד הבא.<br><br>Workfully.ai מבוססת גם על מתודולוגיה לפיתוח קריירה שפותחה ושוכללה במקדמיה בעבודה עם יותר מ-11,000 עובדים, מנהלים ומחפשי עבודה.<br><br>כך שבכל פעם שאתם צריכים עזרה, אתם לא מתחילים שיחה חדשה עם AI שלא מכיר אתכם. אתם ממשיכים תהליך שמבוסס על היכרות עמוקה ומתמשכת עם מי שאתם ומה נכון לכם.</p>
                     </div>
                 </div>
                 <!-- FAQ 4 -->
@@ -681,6 +683,16 @@
                         <p class="text-gray-500 leading-relaxed pb-6">יוצאים עם ה-DNA התעסוקתי האישי שלך, ניתוח כיוונים ומשרות מותאם, קורות חיים שמדברים עליך - וביטחון אמיתי בכל צעד בדרך להשתלבות במקום הנכון.</p>
                     </div>
                 </div>
+                <!-- FAQ 7 -->
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">האם Workfully מחפשת לי עבודה?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">Workfully לא מחפשת עבודה במקומך. היא עוזרת לך לדעת מה לחפש, ומלווה אותך עד שם: בבחינת משרות, בניסוח הערך שלך, בקורות החיים, בלינקדאין ובהכנה לראיונות.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -688,8 +700,8 @@
     <!-- CTA Section -->
     <section class="py-20 bg-primary">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">מוכנים להגיע למקום הנכון?</h2>
-            <p class="text-xl text-white/80 mb-8">התחילו את השיחה עם דנה.</p>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">רוצה לדעת מה לחפש?</h2>
+            <p class="text-xl text-white/80 mb-8">השיחה עם דנה מתחילה כאן.</p>
             <a href="contact.html" class="group inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-primary font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-95">
                 <i data-lucide="arrow-left" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1"></i>
                 אני רוצה להתחיל
@@ -848,9 +860,9 @@
             const body = document.getElementById('chat-body');
             if (!body) return;
             const convo = [
-                { from: 'dana', text: "הי, אני דנה (: ספר לי על מקרה שעשית משהו ומאוד נהנית?" },
+                { from: 'dana', text: "הי, אני דנה (: אשמח לשמוע על מקרה שבו עשית משהו ונהנית מאוד." },
                 { from: 'user', text: "היה איזשהו אתגר בעבודה שאף אחד אחר לא הצליח לפצח בארגון" },
-                { from: 'dana', text: "הסקרנות הזו היא חוזקה אמיתית - בוא נצלול לתוך זה" }
+                { from: 'dana', text: "הסקרנות הזו היא חוזקה אמיתית. נצלול לזה יחד." }
             ];
             const addBubble = (msg) => {
                 const b = document.createElement('div');

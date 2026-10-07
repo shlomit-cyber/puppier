@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workfully - Get to the Right Place</title>
+    <title>Workfully - Finally Know What You're Looking For</title>
+    <meta name="description" content="Workfully.ai is a career development platform built on the Macademia methodology. Dana, a digital career coach who knows you in depth, helps you know what to look for and find the right place.">
+    <meta property="og:title" content="Workfully.ai | Finally know what you're looking for.">
+    <meta property="og:description" content="Workfully.ai is a career development platform built on the Macademia methodology. Dana, a digital career coach who knows you in depth, helps you know what to look for and find the right place.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -114,6 +117,8 @@
             background: #fff; border: 3px solid #e5e7eb;
             transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.45s ease, background-color 0.45s ease, box-shadow 0.45s ease;
         }
+        /* Mobile: cards stack, so the numbered circles are hidden (each card already says Step 1/2) */
+        @media (max-width: 767px) { .timeline-node { display: none; } }
         .timeline-num { font-size: 1.5rem; font-weight: 700; color: #9ca3af; transition: color 0.45s ease; }
         .timeline-step[data-step="1"].is-active .timeline-node { border-color: #309C8D; background: rgba(48, 156, 141, 0.08); }
         .timeline-step[data-step="1"].is-active .timeline-num { color: #309C8D; }
@@ -158,9 +163,9 @@
     <!-- Hero warmth refinement (subtle, hero-only). Revert = delete this block + the
          hero-warm / hero-mock-wrap / hero-cta / hero-send classes + the sparkles text-primary. -->
     <style>
-        /* 1. Very soft pale-mint tint behind the hero only, fading to white */
+        /* 1. Hero background: plain white (the mint now lives only in the chat-mockup glow below) */
         .hero-warm {
-            background: linear-gradient(180deg, #EAF6F2 0%, #F1FAF7 42%, #FFFFFF 100%);
+            background: #FFFFFF;
         }
         /* 3. Gentle mint glow behind the chat mockup so it doesn't float on plain white */
         .hero-mock-wrap { position: relative; }
@@ -236,19 +241,16 @@
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Text -->
                 <div class="fade-in">
-                    <div class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3"><span class="text-primary">Workfully</span><span class="text-gray-800">.ai</span></div>
-                    <div class="inline-flex items-center gap-2 mb-4 text-sm font-semibold tracking-wide text-primary">
-                        <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
-                        Vertical AI for Career Development
-                    </div>
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                        <span class="whitespace-nowrap">Get to <span class="text-primary">the Right Place</span></span>
+                    <div class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-1"><span class="text-[#005A50]">Workfully</span><span class="text-primary">.ai</span></div>
+                    <div class="text-lg sm:text-2xl lg:text-[1.75rem] font-normal text-primary leading-snug mb-6 lg:mb-8">Vertical AI for Career Development</div>
+                    <h1 class="text-[1.625rem] sm:text-4xl lg:text-[2.7rem] font-bold text-gray-900 leading-tight mb-2">
+                        Finally <span class="text-primary">know what you're looking for.</span>
                     </h1>
-                    <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-4 max-w-lg">
-                        Workfully.ai gets to know what makes you thrive at work — then puts that understanding to work.
+                    <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-normal text-gray-800 leading-snug mb-6">
+                        And feel you've found the right place.
                     </p>
                     <p class="text-lg text-gray-600 leading-relaxed mb-8 max-w-lg">
-                        Through an in-depth conversation, Dana uncovers your Career DNA: your unique motivations, strengths, and ideal work environment. From there, she helps you explore career directions, evaluate opportunities, tailor your resume and LinkedIn, prepare for interviews, and take each next step — based on what's actually right for you.
+                        Through an in-depth conversation, Dana uncovers your Career DNA: your unique motivations, strengths, and ideal work environment. From there, she helps you explore career directions, evaluate opportunities, tailor your resume and LinkedIn, prepare for interviews, and take each next step, based on what's actually right for you.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="contact-en.html" class="hero-cta group inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-95">
@@ -331,7 +333,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
-                <p class="text-xl text-gray-500 max-w-2xl mx-auto">Two stages. One continuous journey from understanding yourself to finding — and landing — the right place.</p>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto">Two stages. One continuous journey from understanding yourself to finding the right place.</p>
             </div>
             <div class="timeline max-w-4xl mx-auto fade-in">
                 <!-- Connecting line (desktop) -->
@@ -348,7 +350,7 @@
                             </div>
                             <div class="text-sm font-semibold text-primary mb-2">Step 1</div>
                             <h3 class="text-xl font-bold text-gray-900 mb-3">Discover Yourself</h3>
-                            <p class="text-gray-500 leading-relaxed card-desc">Through an in-depth conversation, Dana uncovers your Career DNA — the motivations, strengths, and work environment that bring out your best.</p>
+                            <p class="text-gray-500 leading-relaxed card-desc">Through an in-depth conversation, Dana uncovers your Career DNA: the motivations, strengths, and work environment that bring out your best.</p>
                         </div>
                     </div>
                     <!-- Step 2 -->
@@ -362,7 +364,7 @@
                             </div>
                             <div class="text-sm font-semibold text-secondary mb-2">Step 2</div>
                             <h3 class="text-xl font-bold text-gray-900 mb-3">Put It to Work</h3>
-                            <p class="text-gray-500 leading-relaxed card-desc">Your Career DNA becomes the lens for every next step. Dana helps you explore career directions, evaluate specific opportunities, sharpen your positioning, tailor your resume and LinkedIn, prepare for interviews, and craft outreach — all based on what she already knows about you.</p>
+                            <p class="text-gray-500 leading-relaxed card-desc">Your Career DNA becomes the lens for every next step. Dana helps you explore career directions, evaluate specific opportunities, sharpen your positioning, tailor your resume and LinkedIn, prepare for interviews, and craft outreach, all based on what she already knows about you.</p>
                         </div>
                     </div>
                 </div>
@@ -416,7 +418,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What You Get</h2>
-                <p class="text-xl text-gray-500 max-w-2xl mx-auto">One deep understanding of you — applied to every career decision that follows.</p>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto">One deep understanding of you, applied to every career decision that follows.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
@@ -431,14 +433,14 @@
                         <i data-lucide="compass" class="w-5 h-5 text-secondary"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Explore Your Possibilities</h3>
-                    <p class="text-gray-500 leading-relaxed card-desc">Discover career directions you may not have considered — and understand why they could be right for you.</p>
+                    <p class="text-gray-500 leading-relaxed card-desc">Discover career directions you may not have considered, and understand why they could be right for you.</p>
                 </div>
                 <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
                     <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
                         <i data-lucide="scan-search" class="w-5 h-5 text-accent"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Evaluate Real Opportunities</h3>
-                    <p class="text-gray-500 leading-relaxed card-desc">Bring Dana any role and see how well it matches your Career DNA — what fits, what doesn't, and what you should explore further.</p>
+                    <p class="text-gray-500 leading-relaxed card-desc">Bring Dana any role and see how well it matches your Career DNA: what fits, what doesn't, and what you should explore further.</p>
                 </div>
                 <div class="fade-in group bg-white border border-gray-100 rounded-2xl p-7 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5">
                     <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
@@ -459,7 +461,7 @@
                         <i data-lucide="map-pin" class="w-5 h-5 text-accent"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Get to the Right Place</h3>
-                    <p class="text-gray-500 leading-relaxed card-desc">Move forward with a clearer understanding of what you're looking for — and why it's right for you.</p>
+                    <p class="text-gray-500 leading-relaxed card-desc">Move forward with a clearer understanding of what you're looking for, and why it's right for you.</p>
                 </div>
             </div>
         </div>
@@ -622,7 +624,7 @@
                         <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
                     </button>
                     <div class="faq-answer px-6">
-                        <p class="text-gray-500 leading-relaxed pb-6">General-purpose AI can help you with a task. Workfully.ai first builds a deep understanding of you — and uses that understanding across your entire career journey.<br><br>Dana learns what drives you, where your strengths show up, what you need from your work environment, and what makes a role genuinely right for you. That Career DNA becomes the context behind every recommendation that follows — whether you're exploring a new direction, analyzing a specific role, tailoring your resume or LinkedIn, preparing for an interview, or deciding what to do next.<br><br>Workfully.ai is also built on a career-development methodology developed and refined by Macademia through work with more than 11,000 employees, managers, and job seekers. So you're not starting a new generic AI conversation every time you need help — you're continuing a process built around a deep, persistent understanding of you.</p>
+                        <p class="text-gray-500 leading-relaxed pb-6">General-purpose AI can help you with a task. Workfully.ai first builds a deep understanding of you, and uses that understanding across your entire career journey.<br><br>Dana learns what drives you, where your strengths show up, what you need from your work environment, and what makes a role genuinely right for you. That Career DNA becomes the context behind every recommendation that follows, whether you're exploring a new direction, analyzing a specific role, tailoring your resume or LinkedIn, preparing for an interview, or deciding what to do next.<br><br>Workfully.ai is also built on a career-development methodology developed and refined by Macademia through work with more than 11,000 employees, managers, and job seekers. So you're not starting a new generic AI conversation every time you need help. You're continuing a process built around a deep, persistent understanding of you.</p>
                     </div>
                 </div>
                 <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
@@ -652,6 +654,15 @@
                         <p class="text-gray-500 leading-relaxed pb-6">Your personal Career DNA, a tailored analysis of directions and positions, a resume that speaks for you - and real confidence in every step toward landing the right role.</p>
                     </div>
                 </div>
+                <div class="fade-in border border-gray-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">Does Workfully find me a job?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform faq-icon"></i>
+                    </button>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-500 leading-relaxed pb-6">Workfully doesn't search for jobs on your behalf. It helps you know what to look for, and supports you all the way there: evaluating roles, articulating your value, and preparing your resume, LinkedIn profile and interviews.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -659,7 +670,7 @@
     <!-- CTA Section -->
     <section class="py-20 bg-primary">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to Get to the Right Place?</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to Know What You're Looking For?</h2>
             <p class="text-xl text-white/80 mb-8">Start the conversation with Dana today.</p>
             <a href="contact-en.html" class="group inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-primary font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-95">
                 Get Started
@@ -810,7 +821,7 @@
             const convo = [
                 { from: 'dana', text: "Hi, I'm Dana :) What makes you lose track of time at work?" },
                 { from: 'user', text: "When I'm solving a problem no one has cracked yet." },
-                { from: 'dana', text: "That curiosity is a real strength — let's build on it." }
+                { from: 'dana', text: "That curiosity is a real strength. Let's build on it." }
             ];
             const addBubble = (msg) => {
                 const b = document.createElement('div');
